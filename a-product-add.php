@@ -1,10 +1,15 @@
 <?php
+
 use GuzzleHttp\Client;
 
+require_once __DIR__.'/controller/FileCtl.php';
+require_once __DIR__.'/controller/ProductCtl.php';
+require_once __DIR__.'/model/Product.php';
 $client = new Client([
     'base_uri' => 'https://api-ssl.bitly.com/',
 ]);
 $fileCtl = new FileCtl();
+$productCtl = new ProductCtl();
 
 /* GET VALUE */
 $description = $_POST['description'];
@@ -50,7 +55,7 @@ if ($_FILES["file"] == null) {
 /* IF FORM VALID */
 if ($a) {
     /*  CHECK EXIST NAME */
-    if ($foodCtl->get_by_name($name) == null) {
+    if ($productCtl->get_by_name($name) == null) {
         /*  UPLOAD FILE TO FIREBASE STORAGE */
         $image = $fileCtl->upload($_FILES["file"]);
 
@@ -71,8 +76,8 @@ if ($a) {
         }
 
         /*  INSERT FOOD TO FIREBASE */
-        $food = new Food(null, $name, $description, $price, $image, $sale, $isSale, true);
-        if ($foodCtl->insert($food, $_POST['list']))
+        $pr = new Product(null, $name, $description, $price, $image, $sale, $isSale, true);
+        if ($productCtl->insert($pr, $_POST['list']))
             echo 'true';
         else
             echo 'false';

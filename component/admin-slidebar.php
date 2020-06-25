@@ -47,20 +47,6 @@
             </div>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
-           aria-expanded="true" aria-controls="collapseTable">
-            <i class="fa fa-square" aria-hidden="true"></i>
-            <span>Bàn</span>
-        </a>
-        <div id="collapseTable" class="collapse" aria-labelledby="collapseTable" data-parent="#accordionSidebar">
-            <div class="py-2 collapse-inner rounded" style="background-color: var(--bg-dark);">
-                <h6 class="collapse-header">Tùy chọn:</h6>
-                <a class="collapse-item" href="admin-ban.php">Danh sách</a>
-                <a class="collapse-item" href="admin-them-ban.php">Thêm bàn</a>
-            </div>
-        </div>
-    </li>
     <hr class="sidebar-divider">
     <!-- Heading -->
     <div class="sidebar-heading">

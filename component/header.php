@@ -13,8 +13,9 @@
                             <li><a href="index.php">Trang chủ</a></li>
                             <li><a href="#">Sản phẩm</a>
                                 <ul class="submenu">
-                                    <li><a href="shop.html"> Product list</a></li>
-                                    <li><a href="product_details.html"> Product Details</a></li>
+                                    <?php foreach ($arr_list as $item){ ?>
+                                        <li><a href="shop.html"> <?php echo $item->getName() ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li class="hot"><a href="blog.html">Dịch vụ</a>

@@ -17,7 +17,7 @@ $(document).on("click", ".btn-del-list", function() {
     const r = confirm('Bạn có chắc chắn muốn ngừng ' + $(this).attr('name') + ' không ?');
     if (r == true) {
         $.ajax({
-            url: "a-delete-list-admin.php",
+            url: "a-product-list-admin-delete.php",
             data: {
                 'id': $(this).attr('data')
             },
@@ -40,7 +40,7 @@ $(document).on("click", ".btn-del-empty-list", function() {
     const r = confirm('Bạn có chắc chắn muốn xóa vĩnh viễn ' + $(this).attr('name') + ' không ?');
     if (r == true) {
         $.ajax({
-            url: "a-delete-empty-list-admin.php",
+            url: "a-product-list-admin-delete-true.php",
             data: {
                 'id': $(this).attr('data')
             },
@@ -65,7 +65,7 @@ $(document).on("click", ".btn-reactive-list", function () {
     const r = confirm('Bạn có chắc chắn muốn mở lại ' + $(this).attr('name') + ' không ?');
     if (r == true) {
         $.ajax({
-            url: "a-reactive-list-admin.php",
+            url: "a-product-list-admin-reactive.php",
             data: {
                 'id': $(this).attr('data')
             },
@@ -86,7 +86,7 @@ $(document).on("click", ".btn-reactive-list", function () {
 
 $(document).on("click", ".btn-edit-list", function () {
     $.ajax({
-        url: "a-load-list-detail.php",
+        url: "a-product-list-load-detail.php",
         data: {
             'id': $(this).attr('data')
         },
@@ -148,7 +148,7 @@ $(document).on("click", "#btn-edit-list", function () {
         data.append('description', $('#txt-description').val());
 
         $.ajax({
-            url: 'a-check-edit-list.php',
+            url: 'a-product-list-edit.php',
             data: data,
             type: "POST",
             contentType: false,

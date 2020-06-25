@@ -15,7 +15,8 @@ if (!isset($_SESSION)) session_start();
     <link rel="shortcut icon" type="image/x-icon" href="https://bingii901.com/images/icons/favicon.ico">
     <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="css/notification.css" rel="stylesheet">
+    <link href="vendor_file/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -112,13 +113,17 @@ if (!isset($_SESSION)) session_start();
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor_file/jquery/jquery.min.js"></script>
+<script src="vendor_file/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor_file/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/sb-admin-2.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="vendor_file/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
+<script src="js/notification.js"></script>
+<script src="js/ajax/firebase-reload-data-event.js"></script>
+<script src="js/ajax/product.js"></script>
+<script src="js/ajax/regex.js"></script>
 
 </body>
 

@@ -1,6 +1,10 @@
 <?php
+
+require_once __DIR__ . '/controller/ListCtl.php';
 if (!isset($_SESSION)) session_start();
 //if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
+$listCtl = new ListCtl();
+$arr_list = $listCtl->getAll_enable();
 ?>
 <!DOCTYPE html>
 <html lang="vn">
@@ -14,8 +18,9 @@ if (!isset($_SESSION)) session_start();
     <link rel="shortcut icon" type="image/x-icon" href="https://bingii901.com/images/icons/favicon.ico">
     <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="vendor_file/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/notification.css" rel="stylesheet">
 </head>
 <body id="page-top">
 <div id="wrapper">
@@ -47,7 +52,9 @@ if (!isset($_SESSION)) session_start();
                                     <div class="form-group">
                                         <label class="form-label" for="txt-danhmuc">Danh mục</label>
                                         <select class="form-control form-input" id="txt-list">
-
+                                            <?php foreach ($arr_list as $item) { ?>
+                                                <option value="<?php echo $item->getId() ?>"><?php echo $item->getName() ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -128,13 +135,15 @@ if (!isset($_SESSION)) session_start();
     <i class="fas fa-angle-up"></i>
 </a>
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor_file/jquery/jquery.min.js"></script>
+<script src="vendor_file/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor_file/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/sb-admin-2.min.js"></script>
 <!--<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
 <!--<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>-->
 <!--<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>-->
-
+<script src="js/notification.js"></script>
+<script src="js/ajax/regex.js"></script>>
+<script src="js/ajax/product-add.js"></script
 </body>
 </html>

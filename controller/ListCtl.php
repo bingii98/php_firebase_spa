@@ -1,13 +1,17 @@
 <?php
+
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 
 require_once './vendor/autoload.php';
 require_once './model/Lists.php';
+require_once './controller/ProductCtl.php';
 
-class ListCtl{
+class ListCtl
+{
 
     protected $firebase;
+    protected $product_ctl;
 
     /**
      * UserCtl constructor.
@@ -18,6 +22,7 @@ class ListCtl{
         $factory = (new Factory)->withServiceAccount('./secret/key.json');
         $firebase = $factory->createDatabase();
         $this->firebase = $firebase;
+        $this->product_ctl = new ProductCtl();
     }
 
 
@@ -25,17 +30,31 @@ class ListCtl{
     {
         $list = $this->firebase->getReference('list')->orderByKey()->equalTo($id)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            return new Lists($key, $item['name'], $item['description'], $item['isActive'],array());
+            return new Lists($key, $item['name'], $item['description'], $item['isActive'], array());
         }
         return null;
     }
 
 
-    public function getAll(){
+    public function getAll()
+    {
         $arr_list = array();
         $list = $this->firebase->getReference('list')->orderByChild('name')->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr_list, new Lists($key, $item['name'], $item['description'], $item['isActive'], array()));
+            }
+        return $arr_list;
+    }
+
+
+    public function getAll_enable(){
+        $arr_list = array();
+        $list = $this->firebase->getReference('list')->orderByKey()->getSnapshot()->getValue();
         foreach ($list as $key => $item){
-            array_push($arr_list,new Lists($key,$item['name'],$item['description'],$item['isActive'],array()));
+            if($item['isActive']){
+                array_push($arr_list,new Lists($key,$item['name'],$item['description'],$item['isActive'],array()));
+            }
         }
         return $arr_list;
     }
@@ -56,12 +75,11 @@ class ListCtl{
     }
 
 
-
     public function get_by_name($name)
     {
         $list = $this->firebase->getReference('list')->orderByChild('name')->equalTo($name)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            return new Lists($key, $item['name'], $item['description'], $item['isActive'],array());
+            return new Lists($key, $item['name'], $item['description'], $item['isActive'], array());
         }
         return null;
     }
@@ -82,9 +100,9 @@ class ListCtl{
     public function disable($id)
     {
         try {
-            if($this->food_ctl->get_is_empty_food($id) == 'true'){
-                $this->firebase->getReference('list/'.$id)->set(null);
-                return 'true';
+            if($this->product_ctl->get_is_empty_product($id) == 'true'){
+            $this->firebase->getReference('list/' . $id)->set(null);
+            return 'true';
             }else{
                 return 'double';
             }
@@ -98,6 +116,19 @@ class ListCtl{
         try {
             $this->firebase->getReference('list/' . $id)->update([
                 'isActive' => true
+            ]);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function update($list)
+    {
+        try {
+            $this->firebase->getReference('list/' . $list->getId())->update([
+                'description' => $list->getDescription(),
+                'name' => $list->getName(),
             ]);
             return true;
         } catch (Exception $e) {

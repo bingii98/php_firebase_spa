@@ -2,38 +2,36 @@
 class Product{
     private $id;
     private $name;
-    private $list;
+    private $discription;
     private $price;
     private $image;
-    private $description;
     private $sale;
     private $isSale;
     private $isActive;
 
     /**
-     * Product constructor.
+     * Food constructor.
      * @param $id
      * @param $name
-     * @param $list
+     * @param $discription
      * @param $price
      * @param $image
-     * @param $description
      * @param $sale
      * @param $isSale
      * @param $isActive
      */
-    public function __construct($id, $name, $list, $price, $image, $description, $sale, $isSale, $isActive)
+    public function __construct($id, $name, $discription, $price, $image, $sale, $isSale, $isActive)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->list = $list;
+        $this->discription = $discription;
         $this->price = $price;
         $this->image = $image;
-        $this->description = $description;
         $this->sale = $sale;
         $this->isSale = $isSale;
         $this->isActive = $isActive;
     }
+
 
     /**
      * @return mixed
@@ -70,17 +68,17 @@ class Product{
     /**
      * @return mixed
      */
-    public function getList()
+    public function getDiscription()
     {
-        return $this->list;
+        return $this->discription;
     }
 
     /**
-     * @param mixed $list
+     * @param mixed $discription
      */
-    public function setList($list)
+    public function setDiscription($discription)
     {
-        $this->list = $list;
+        $this->discription = $discription;
     }
 
     /**
@@ -118,22 +116,6 @@ class Product{
     /**
      * @return mixed
      */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getSale()
     {
         return $this->sale;
@@ -156,14 +138,6 @@ class Product{
     }
 
     /**
-     * @param mixed $isSale
-     */
-    public function setIsSale($isSale)
-    {
-        $this->isSale = $isSale;
-    }
-
-    /**
      * @return mixed
      */
     public function getIsActive()
@@ -179,6 +153,22 @@ class Product{
         $this->isActive = $isActive;
     }
 
+    /**
+     * @return mixed
+     */
+    public function printIsSale()
+    {
+        if($this->isSale == 1){
+            return "Sealing";
+        }
+        return "Not sale";
+    }
 
-
+    /**
+     * @param mixed $isSale
+     */
+    public function setIsSale($isSale)
+    {
+        $this->isSale = $isSale;
+    }
 }
