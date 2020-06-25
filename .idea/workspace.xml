@@ -19,6 +19,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -31,12 +38,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js/ajax" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\spa_mkt" />
-      <recent name="C:\xampp\htdocs\spa_mkt\secret" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
+      <recent name="C:\xampp\htdocs\spa_mkt" />
+      <recent name="C:\xampp\htdocs\spa_mkt\css" />
+      <recent name="C:\xampp\htdocs\spa_mkt\ajax" />
+      <recent name="C:\xampp\htdocs\spa_mkt\controller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -49,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593050547374</updated>
-      <workItem from="1593050549594" duration="2569000" />
+      <workItem from="1593050549594" duration="6029000" />
     </task>
     <servers />
   </component>
@@ -68,13 +81,21 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1593052501708">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1593055323171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593052501708" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593052516569">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593055323171" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1593055872589">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593052516569" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593055872589" />
+    <state x="769" y="243" key="NewPhpClassDialog" timestamp="1593055059443">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593055059443" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593055166482">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593055166482" />
   </component>
 </project>
