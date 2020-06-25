@@ -1,0 +1,12 @@
+{
+    "name": "administrator/spa_mkt",
+    "authors": [
+        {
+            "name": "Nguyen Giang",
+            "email": "nguyengiang@bingii901.com"
+        }
+    ],
+    "require": {
+        "kreait/firebase-php": "5.0"
+    }
+}
