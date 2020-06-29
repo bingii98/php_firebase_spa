@@ -2,7 +2,8 @@
 include_once __DIR__ . '/controller/ListCtl.php';
 $listCtl = new ListCtl();
 $productCtl = new ProductCtl();
-$arr_list = $listCtl->getAll();
+$arr_list_service = $listCtl->getService();
+$arr_list_product = $listCtl->getProduct();
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
