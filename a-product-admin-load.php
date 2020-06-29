@@ -13,6 +13,7 @@ foreach ($arr as $i => $item) { ?>
         <td><?php echo $item->getDiscription() ?></td>
         <td><?php echo number_format($item->getPrice(), 0, "", ".") ?> ₫</td>
         <td><?php if ($item->getIsSale()) echo $item->getSale() . "%"; else echo '0%'; ?></td>
+        <td><p class="tag <?php echo $item->getIsService() ? "service" : "product" ?>"><?php echo $item->getIsService() ? "Dịch vụ" : "Sản phẩm" ?></p></td>
         <td>
             <button class="btn-edit-product btn btn-primary btn-circle btn-sm m-1" data="<?php echo $item->getId() ?>" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
                 <span class="icon text-white-50">

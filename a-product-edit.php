@@ -52,7 +52,7 @@ if ($a) {
     /*  CHECK EXIST NAME */
     if ($productCtl->get_by_name($name) == null || $productCtl->get_by_name($name)->getName() == $name) {
         /*  INSERT FOOD TO FIREBASE */
-        $food = new Product($id, $name, $description, $price, null, $sale, $isSale, null);
+        $food = new Product($id, $name, $description, $price, null, $sale, $isSale,null, null);
         if ($productCtl->update($food))
             echo 'true';
         else

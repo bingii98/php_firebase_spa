@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    f()
+
     const $valueSpan = $('#show-range-percent')
     const $value = $('#txt-range-sale')
     const $pr_name = $('#txt-name')
@@ -53,6 +55,11 @@ $(document).ready(function () {
     /*Event change value input checkbox - check*/
     $pr_isSale.on('input change', () => {
         changePrice()
+    })
+
+    /*Event change value input checkbox - check*/
+    $pr_isService.on('input change', () => {
+        f()
     })
 
     /*Event change value input image - check*/
@@ -178,3 +185,17 @@ $(document).ready(function () {
         }
     })
 });
+
+function f() {
+    var isService = ($('#switch2').is(":checked")) ? true : false;
+    $.ajax({
+        url: 'a-product-list-load.php',
+        data: {
+            "isService" : isService
+        },
+        type: "POST",
+        success: function (data) {
+            $("#txt-list").html(data)
+        }
+    })
+}

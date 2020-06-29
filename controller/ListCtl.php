@@ -48,6 +48,30 @@ class ListCtl
     }
 
 
+    public function getService()
+    {
+        $arr_list = array();
+        $list = $this->firebase->getReference('list')->orderByChild('isService')->equalTo(true)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr_list, new Lists($key, $item['name'], $item['description'], $item['isActive'],$item['isService'], array()));
+            }
+        return $arr_list;
+    }
+
+
+    public function getProduct()
+    {
+        $arr_list = array();
+        $list = $this->firebase->getReference('list')->orderByChild('isService')->equalTo(false)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr_list, new Lists($key, $item['name'], $item['description'], $item['isActive'],$item['isService'], array()));
+            }
+        return $arr_list;
+    }
+
+
     public function getAll_enable(){
         $arr_list = array();
         $list = $this->firebase->getReference('list')->orderByKey()->getSnapshot()->getValue();

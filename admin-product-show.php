@@ -54,12 +54,13 @@ if (!isset($_SESSION)) session_start();
                                     <th>Mô tả</th>
                                     <th style="min-width: 100px;">Giá</th>
                                     <th>Giảm giá</th>
+                                    <th>Loại</th>
                                     <th>Hành động</th>
                                 </tr>
                                 </thead>
                                 <tbody id="data-food-table">
                                 <tr>
-                                    <td colspan="7">
+                                    <td colspan="8">
                                         <p id="loading-svg" style="width: 100%; text-align: center">
                                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
                                                 <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">

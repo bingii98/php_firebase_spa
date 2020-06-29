@@ -3,8 +3,6 @@
 require_once __DIR__ . '/controller/ListCtl.php';
 if (!isset($_SESSION)) session_start();
 //if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
-$listCtl = new ListCtl();
-$arr_list = $listCtl->getAll_enable();
 ?>
 <!DOCTYPE html>
 <html lang="vn">
@@ -60,9 +58,7 @@ $arr_list = $listCtl->getAll_enable();
                                     <div class="form-group">
                                         <label class="form-label" for="txt-danhmuc">Danh mục</label>
                                         <select class="form-control form-input" id="txt-list">
-                                            <?php foreach ($arr_list as $item) { ?>
-                                                <option value="<?php echo $item->getId() ?>"><?php echo $item->getName() ?></option>
-                                            <?php } ?>
+
                                         </select>
                                     </div>
                                     <div class="form-group">

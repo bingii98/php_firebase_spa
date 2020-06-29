@@ -35,9 +35,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -118,16 +116,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\spa_mkt\js" />
+      <recent name="C:\xampp\htdocs\spa_mkt" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\spa_mkt" />
       <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
       <recent name="C:\xampp\htdocs\spa_mkt\css" />
       <recent name="C:\xampp\htdocs\spa_mkt\ajax" />
       <recent name="C:\xampp\htdocs\spa_mkt\controller" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\spa_mkt\js" />
-      <recent name="C:\xampp\htdocs\spa_mkt" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -143,24 +141,24 @@
       <workItem from="1593050549594" duration="6029000" />
       <workItem from="1593057832038" duration="9767000" />
       <workItem from="1593414470448" duration="5118000" />
+      <workItem from="1593461570463" duration="2134000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change manager list" />
