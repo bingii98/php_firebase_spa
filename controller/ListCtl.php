@@ -30,7 +30,7 @@ class ListCtl
     {
         $list = $this->firebase->getReference('list')->orderByKey()->equalTo($id)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            return new Lists($key, $item['name'], $item['description'], $item['isActive'], array());
+            return new Lists($key, $item['name'], $item['description'], $item['isActive'],$item['isService'], array());
         }
         return null;
     }
@@ -42,7 +42,7 @@ class ListCtl
         $list = $this->firebase->getReference('list')->orderByChild('name')->getSnapshot()->getValue();
         if (!empty($list))
             foreach ($list as $key => $item) {
-                array_push($arr_list, new Lists($key, $item['name'], $item['description'], $item['isActive'], array()));
+                array_push($arr_list, new Lists($key, $item['name'], $item['description'], $item['isActive'],$item['isService'], array()));
             }
         return $arr_list;
     }
@@ -53,19 +53,20 @@ class ListCtl
         $list = $this->firebase->getReference('list')->orderByKey()->getSnapshot()->getValue();
         foreach ($list as $key => $item){
             if($item['isActive']){
-                array_push($arr_list,new Lists($key,$item['name'],$item['description'],$item['isActive'],array()));
+                array_push($arr_list,new Lists($key,$item['name'],$item['description'],$item['isActive'],$item['isService'],array()));
             }
         }
         return $arr_list;
     }
 
 
-    public function insert($list)
+    public function insert(Lists $list)
     {
         try {
             $this->firebase->getReference('list')->push([
                 'description' => $list->getDescription(),
                 'isActive' => $list->getIsActive(),
+                'isService' => $list->getIsService(),
                 'name' => $list->getName(),
             ]);
             return true;
@@ -79,7 +80,7 @@ class ListCtl
     {
         $list = $this->firebase->getReference('list')->orderByChild('name')->equalTo($name)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            return new Lists($key, $item['name'], $item['description'], $item['isActive'], array());
+            return new Lists($key, $item['name'], $item['description'], $item['isActive'],$item['isService'], array());
         }
         return null;
     }

@@ -1,5 +1,6 @@
 <?php
-class Product{
+class Product
+{
     private $id;
     private $name;
     private $discription;
@@ -7,10 +8,11 @@ class Product{
     private $image;
     private $sale;
     private $isSale;
+    private $isService;
     private $isActive;
 
     /**
-     * Food constructor.
+     * Product constructor.
      * @param $id
      * @param $name
      * @param $discription
@@ -18,9 +20,10 @@ class Product{
      * @param $image
      * @param $sale
      * @param $isSale
+     * @param $isService
      * @param $isActive
      */
-    public function __construct($id, $name, $discription, $price, $image, $sale, $isSale, $isActive)
+    public function __construct($id, $name, $discription, $price, $image, $sale, $isSale, $isService, $isActive)
     {
         $this->id = $id;
         $this->name = $name;
@@ -29,9 +32,9 @@ class Product{
         $this->image = $image;
         $this->sale = $sale;
         $this->isSale = $isSale;
+        $this->isService = $isService;
         $this->isActive = $isActive;
     }
-
 
     /**
      * @return mixed
@@ -138,6 +141,30 @@ class Product{
     }
 
     /**
+     * @param mixed $isSale
+     */
+    public function setIsSale($isSale)
+    {
+        $this->isSale = $isSale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsService()
+    {
+        return $this->isService;
+    }
+
+    /**
+     * @param mixed $isService
+     */
+    public function setIsService($isService)
+    {
+        $this->isService = $isService;
+    }
+
+    /**
      * @return mixed
      */
     public function getIsActive()
@@ -153,22 +180,5 @@ class Product{
         $this->isActive = $isActive;
     }
 
-    /**
-     * @return mixed
-     */
-    public function printIsSale()
-    {
-        if($this->isSale == 1){
-            return "Sealing";
-        }
-        return "Not sale";
-    }
 
-    /**
-     * @param mixed $isSale
-     */
-    public function setIsSale($isSale)
-    {
-        $this->isSale = $isSale;
-    }
 }

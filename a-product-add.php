@@ -15,6 +15,7 @@ $productCtl = new ProductCtl();
 $description = $_POST['description'];
 $isActive = true;
 $isSale = $_POST['isSale'];
+$isService = $_POST['isService'];
 $list = $_POST['list'];
 $name = $_POST['name'];
 $price = $_POST['price'];
@@ -76,7 +77,7 @@ if ($a) {
         }
 
         /*  INSERT FOOD TO FIREBASE */
-        $pr = new Product(null, $name, $description, $price, $image, $sale, $isSale, true);
+        $pr = new Product(null, $name, $description, $price, $image, $sale, $isSale, $isService, true);
         if ($productCtl->insert($pr, $_POST['list']))
             echo 'true';
         else

@@ -4,6 +4,7 @@ class Lists{
     private $name;
     private $description;
     private $isActive;
+    private $isService;
     private $products = array();
 
     /**
@@ -12,14 +13,16 @@ class Lists{
      * @param $name
      * @param $description
      * @param $isActive
+     * @param $isService
      * @param array $products
      */
-    public function __construct($id, $name, $description, $isActive, array $products)
+    public function __construct($id, $name, $description, $isActive, $isService, array $products)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->isActive = $isActive;
+        $this->isService = $isService;
         $this->products = $products;
     }
 
@@ -85,6 +88,22 @@ class Lists{
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsService()
+    {
+        return $this->isService;
+    }
+
+    /**
+     * @param mixed $isService
+     */
+    public function setIsService($isService)
+    {
+        $this->isService = $isService;
     }
 
     /**

@@ -4,6 +4,7 @@ $(document).ready(function () {
     const $pr_name = $('#txt-name')
     const $pr_price = $('#txt-price')
     const $pr_isSale = $('#switch1')
+    const $pr_isService = $('#switch2')
     const $pr_sale = $('#txt-range-sale')
     const $pr_image = $('#txt-file')
     /*Change input range*/
@@ -146,11 +147,13 @@ $(document).ready(function () {
             const data = new FormData();
             const file = $('#txt-file')[0].files[0];
             const isSale = ($('#switch1').is(":checked")) ? true : false;
+            const isService = ($('#switch2').is(":checked")) ? true : false;
             data.append('file', file);
             data.append('name', $('#txt-name').val());
             data.append('list', $('#txt-list').val());
             data.append('description', $('#txt-description').val());
             data.append('isSale', isSale);
+            data.append('isService', isService);
             data.append('price', $('#txt-price').val());
             data.append('rangeSale', $('#txt-range-sale').val());
 

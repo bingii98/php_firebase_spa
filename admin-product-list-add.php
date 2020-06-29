@@ -57,6 +57,14 @@ if (!isset($_SESSION)) session_start();
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-label">Danh sách dịch vụ</label>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input form-input" id="switch2">
+                                            <label class="custom-control-label" for="switch2"></label>
+                                            <label class="form-error" id="error-issale"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <button class="btn btn-primary form-control" id="btn-add-product-list" type="button">
                                             <strong>Xác nhận</strong></button>
                                     </div>

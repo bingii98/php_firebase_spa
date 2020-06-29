@@ -35,9 +35,11 @@ $(document).ready(function () {
         if (checkForm()) {
             const data = new FormData();
             const isActive = ($('#switch1').is(":checked")) ? true : false;
+            const isService = ($('#switch2').is(":checked")) ? true : false;
             data.append('name', $('#txt-name').val());
             data.append('description', $('#txt-description').val());
             data.append('isActive', isActive);
+            data.append('isService', isService);
             $.ajax({
                 url: 'a-product-list-add.php',
                 data: data,

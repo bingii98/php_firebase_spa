@@ -8,6 +8,7 @@ foreach ($arr_list as $i => $item) { ?>
         <td><?php echo $i ?></td>
         <th><?php echo $item->getName() ?></th>
         <td><?php echo $item->getDescription() ?></td>
+        <td><p class="tag <?php echo $item->getIsService() ? "service" : "product" ?>"><?php echo $item->getIsService() ? "Dịch vụ" : "Sản phẩm" ?></p></td>
         <td>
             <button class="btn-edit-list btn btn-primary btn-circle btn-sm m-1" data="<?php echo $item->getId() ?>" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
                 <span class="icon text-white-50">

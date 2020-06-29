@@ -50,6 +50,14 @@ $arr_list = $listCtl->getAll_enable();
                                         <label class="form-error" id="error-price"></label>
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-label">Sản phẩm dịch vụ</label>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input form-input" id="switch2">
+                                            <label class="custom-control-label" for="switch2"></label>
+                                            <label class="form-error" id="error-issale"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-label" for="txt-danhmuc">Danh mục</label>
                                         <select class="form-control form-input" id="txt-list">
                                             <?php foreach ($arr_list as $item) { ?>

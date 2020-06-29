@@ -52,6 +52,7 @@ if (!isset($_SESSION)) session_start();
                                     <th>STT</th>
                                     <th>Tên</th>
                                     <th>Mô tả</th>
+                                    <th>Loại</th>
                                     <th>Hành động</th>
                                 </tr>
                                 </thead>

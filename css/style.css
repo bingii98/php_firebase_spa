@@ -952,6 +952,24 @@ section {
     cursor: pointer;
 }
 
+.tag{
+    display: block;
+    width: 80px;
+    padding: 2px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+.tag.product{
+    background-color: darkgreen;
+}
+
+.tag.service{
+    background-color: midnightblue;
+}
+
 @keyframes quadrado {
     0% {
         transform: rotateY(0deg);

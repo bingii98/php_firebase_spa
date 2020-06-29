@@ -29,7 +29,7 @@ class ProductCtl
         $list = $this->firebase->getReference('product')->orderByChild('list')->getSnapshot()->getValue();
         if (!empty($list))
             foreach ($list as $key => $item) {
-                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isActive']));
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
             }
         return $arr;
     }
@@ -40,7 +40,7 @@ class ProductCtl
         $list = $this->firebase->getReference('product')->orderByKey()->limitToFirst(8)->getSnapshot()->getValue();
         if (!empty($list))
             foreach ($list as $key => $item) {
-                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isActive']));
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
             }
         return $arr;
     }
@@ -50,7 +50,7 @@ class ProductCtl
         $arr = array();
         $list = $this->firebase->getReference('product')->orderByChild('list')->equalTo($id)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isActive']));
+            array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
         }
         return $arr;
     }
@@ -72,7 +72,7 @@ class ProductCtl
     {
         $list = $this->firebase->getReference('product')->orderByChild('name')->equalTo($name)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            return new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isActive']);
+            return new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']);
         }
         return null;
     }
@@ -82,7 +82,7 @@ class ProductCtl
     {
         $list = $this->firebase->getReference('product')->orderByKey()->equalTo($id)->getSnapshot()->getValue();
         foreach ($list as $key => $item) {
-            return new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isActive']);
+            return new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']);
         }
         return null;
     }
@@ -112,13 +112,14 @@ class ProductCtl
         }
     }
 
-    public function insert($food, $list)
+    public function insert(Product $food, $list)
     {
         try {
             $this->firebase->getReference('product')->push([
                 'description' => $food->getDiscription(),
                 'image' => $food->getImage(),
                 'isActive' => true,
+                'isService' => $food->getIsService(),
                 'isSale' => (($food->getIsSale()) == 'true' ? true : false),
                 'list' => $list,
                 'name' => $food->getName(),
@@ -131,7 +132,7 @@ class ProductCtl
         }
     }
 
-    public function update($food)
+    public function update(Product $food)
     {
         try {
             $this->firebase->getReference('product/' . $food->getId())->update([
