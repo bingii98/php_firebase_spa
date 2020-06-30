@@ -14,14 +14,14 @@
                             <li><a href="#">Sản phẩm</a>
                                 <ul class="submenu">
                                     <?php foreach ($arr_list_product as $item){ ?>
-                                        <li><a href="shop.html"> <?php echo $item->getName() ?></a></li>
+                                        <li><a href="shop.php"> <?php echo $item->getName() ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>
                             <li class="hot"><a href="blog.html">Dịch vụ</a>
                                 <ul class="submenu">
                                     <?php foreach ($arr_list_service as $item){ ?>
-                                        <li><a href="shop.html"> <?php echo $item->getName() ?></a></li>
+                                        <li><a href="shop.php"> <?php echo $item->getName() ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

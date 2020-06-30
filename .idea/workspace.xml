@@ -122,16 +122,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\spa_mkt\js" />
-      <recent name="C:\xampp\htdocs\spa_mkt" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\spa_mkt" />
       <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
       <recent name="C:\xampp\htdocs\spa_mkt\css" />
       <recent name="C:\xampp\htdocs\spa_mkt\ajax" />
       <recent name="C:\xampp\htdocs\spa_mkt\controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\spa_mkt\js" />
+      <recent name="C:\xampp\htdocs\spa_mkt" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -148,7 +148,7 @@
       <workItem from="1593057832038" duration="9767000" />
       <workItem from="1593414470448" duration="5118000" />
       <workItem from="1593461570463" duration="2665000" />
-      <workItem from="1593525486415" duration="8494000" />
+      <workItem from="1593525486415" duration="14746000" />
     </task>
     <servers />
   </component>
