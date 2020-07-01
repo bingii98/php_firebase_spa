@@ -5,6 +5,7 @@ use Kreait\Firebase\ServiceAccount;
 
 require_once './vendor/autoload.php';
 require_once './model/Product.php';
+require_once './controller/ListCtl.php';
 
 
 class ProductCtl
@@ -34,10 +35,66 @@ class ProductCtl
         return $arr;
     }
 
+    public function getService()
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product')->orderByChild('isService')->equalTo(true)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
+    public function getProductFirst9()
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product')->orderByChild('isService')->equalTo(true)->limitToLast(9)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
+    public function getProductContinue9($idLast)
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product')->orderByChild('isService')->equalTo(true)->endAt($idLast)->limitToLast(9)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
+
+    public function getProduct()
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product')->orderByChild('isService')->equalTo(false)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
+    public function getByList($id)
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product')->orderByChild('list')->equalTo($id)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
     public function getNew()
     {
         $arr = array();
-        $list = $this->firebase->getReference('product')->orderByKey()->limitToFirst(8)->getSnapshot()->getValue();
+        $list = $this->firebase->getReference('product')->orderByKey()->limitToFirst(3)->getSnapshot()->getValue();
         if (!empty($list))
             foreach ($list as $key => $item) {
                 array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
@@ -86,7 +143,6 @@ class ProductCtl
         }
         return null;
     }
-
 
     public function delete($id)
     {

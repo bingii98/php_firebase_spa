@@ -1,16 +1,20 @@
 <?php
 include_once __DIR__ . '/controller/ListCtl.php';
+include_once __DIR__ . '/controller/ProductCtl.php';
 $listCtl = new ListCtl();
 $productCtl = new ProductCtl();
 $arr_list_service = $listCtl->getService();
 $arr_list_product = $listCtl->getProduct();
+$arr_list_product_new = $productCtl->getNew();
+$arr_list_product_service = $productCtl->getService();
+$arr_list_product_product = $productCtl->getProduct();
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Watch shop | eCommers</title>
+    <title>VenVen Spa</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -106,44 +110,29 @@ $arr_list_product = $listCtl->getProduct();
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="section-tittle mb-70">
-                            <h2>New Arrivals</h2>
+                            <h2>Sản phẩm mới</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <?php foreach ($arr_list_product_new as $item){ ?>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="single-new-pro mb-30 text-center">
                             <div class="product-img">
-                                <img src="assets/img/gallery/new_product1.png" alt="">
+                                <img src="<?php echo $item->getImage() ?>" alt="">
                             </div>
                             <div class="product-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
+                                <h3 style="white-space: nowrap;overflow: hidden;"><a href="product_details.html"><?php echo $item->getName() ?></a></h3>
+                                <?php if ($item->getIsSale() == 1) { ?>
+                                    <span><?php echo number_format($item->getPrice() - $item->getPrice() / 100 * $item->getSale(), 0, "", ".") ?> đ</span>
+<!--                                    <span>--><?php //echo number_format($item->getPrice(), 0, "", ".") ?><!--</span>-->
+                                <?php } else { ?>
+                                    <span><?php echo number_format($item->getPrice(), 0, "", ".") ?> đ</span>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-new-pro mb-30 text-center">
-                            <div class="product-img">
-                                <img src="assets/img/gallery/new_product2.png" alt="">
-                            </div>
-                            <div class="product-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-new-pro mb-30 text-center">
-                            <div class="product-img">
-                                <img src="assets/img/gallery/new_product3.png" alt="">
-                            </div>
-                            <div class="product-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -154,24 +143,24 @@ $arr_list_product = $listCtl->getProduct();
                 <div class="row">
                     <div class="col-xl-6 col-lg-4 col-md-6 col-sm-6">
                         <div class="single-gallery mb-30">
-                            <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery1.png);"></div>
+                            <div class="gallery-img big-img" style="background-image: url(<?php echo $arr_list_product_service[0]->getImage() ?>);"></div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="single-gallery mb-30">
-                            <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery2.png);"></div>
+                            <div class="gallery-img big-img" style="background-image: url(<?php echo $arr_list_product_service[1]->getImage() ?>);"></div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-12">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6">
                                 <div class="single-gallery mb-30">
-                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery3.png);"></div>
+                                    <div class="gallery-img small-img" style="background-image: url(<?php echo $arr_list_product_service[2]->getImage() ?>);"></div>
                                 </div>
                             </div>
                             <div class="col-xl-12 col-lg-12  col-md-6 col-sm-6">
                                 <div class="single-gallery mb-30">
-                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery4.png);"></div>
+                                    <div class="gallery-img small-img" style="background-image: url(<?php echo $arr_list_product_service[3]->getImage() ?>);"></div>
                                 </div>
                             </div>
                         </div>
@@ -188,29 +177,33 @@ $arr_list_product = $listCtl->getProduct();
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-70 text-center">
-                            <h2>Popular Items</h2>
-                            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                            <h2>Sản phẩm</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-popular-items mb-50 text-center">
-                            <div class="popular-img">
-                                <img src="assets/img/gallery/popular1.png" alt="">
-                                <div class="img-cap">
-                                    <span>Add to cart</span>
+                    <?php $i = 0;
+                    foreach ($arr_list_product_product as $item) {
+                        if(++$i > 3)
+                            break; ?>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-popular-items mb-50 text-center">
+                                <div class="popular-img">
+                                    <img src="<?php echo $item->getImage() ?>" alt="">
+                                    <div class="img-cap">
+                                        <span>Add to cart</span>
+                                    </div>
+                                    <div class="favorit-items">
+                                        <span class="flaticon-heart"></span>
+                                    </div>
                                 </div>
-                                <div class="favorit-items">
-                                    <span class="flaticon-heart"></span>
+                                <div class="popular-caption">
+                                    <h3><a href="product_details.html"><?php echo $item->getName() ?></a></h3>
+                                    <span><?php echo number_format($item->getPrice(), 0, "", ".") ?> đ</span>
                                 </div>
-                            </div>
-                            <div class="popular-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
                 <!-- Button -->
                 <div class="row justify-content-center">
@@ -227,7 +220,7 @@ $arr_list_product = $listCtl->getProduct();
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                     <div class="video-wrap">
-                        <div class="play-btn "><a class="popup-video" href="https://www.youtube.com/watch?v=KMc6DyEJp04"><i class="fas fa-play"></i></a></div>
+                        <div class="play-btn "><a class="popup-video" href="https://youtu.be/AoPiLg8DZ3A"><i class="fas fa-play"></i></a></div>
                     </div>
                     </div>
                 </div>
@@ -247,28 +240,28 @@ $arr_list_product = $listCtl->getProduct();
                 <div class="row align-items-center justify-content-between padding-130">
                     <div class="col-lg-5 col-md-6">
                         <div class="watch-details mb-40">
-                            <h2>Watch of Choice</h2>
-                            <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                            <a href="shop.html" class="btn">Show Watches</a>
+                            <h2><?php echo $arr_list_product_product[0]->getName() ?></h2>
+                            <p><?php echo $arr_list_product_product[0]->getDiscription() ?></p>
+                            <a href="shop.php" class="btn">Show Watches</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-10">
                         <div class="choice-watch-img mb-40">
-                            <img src="assets/img/gallery/choce_watch1.png" alt="">
+                            <img src="<?php echo $arr_list_product_product[0]->getImage() ?>" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-between">
                     <div class="col-lg-6 col-md-6 col-sm-10">
                         <div class="choice-watch-img mb-40">
-                            <img src="assets/img/gallery/choce_watch2.png" alt="">
+                            <img src="<?php echo $arr_list_product_product[1]->getImage() ?>" alt="">
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6">
                         <div class="watch-details mb-40">
-                            <h2>Watch of Choice</h2>
-                            <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                            <a href="shop.html" class="btn">Show Watches</a>
+                            <h2><?php echo $arr_list_product_product[1]->getName() ?></h2>
+                            <p><?php echo $arr_list_product_product[1]->getDiscription() ?></p>
+                            <a href="shop.php" class="btn">Show Watches</a>
                         </div>
                     </div>
                 </div>
@@ -363,27 +356,6 @@ $arr_list_product = $listCtl->getProduct();
                                     <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Report a Payment Issue</a></li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Footer bottom -->
-                <div class="row align-items-center">
-                    <div class="col-xl-7 col-lg-8 col-md-7">
-                        <div class="footer-copy-right">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>                  
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-4 col-md-5">
-                        <div class="footer-copy-right f-right">
-                            <!-- social -->
-                            <div class="footer-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-behance"></i></a>
-                                <a href="#"><i class="fas fa-globe"></i></a>
                             </div>
                         </div>
                     </div>
