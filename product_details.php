@@ -226,6 +226,7 @@ $product = $productCtl->get($_GET['code']);
 <script src="./assets/js/jquery.counterup.min.js"></script>
 <script src="./assets/js/waypoints.min.js"></script>
 <script src="js/ajax/shop.js"></script>
+<script src="js/header.js"></script>
 </body>
 
 </html>

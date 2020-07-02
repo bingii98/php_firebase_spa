@@ -175,6 +175,7 @@ $arr_list_product = $listCtl->getProduct();
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
 <script src="js/ajax/shop.js"></script>
+<script src="js/header.js"></script>
 <script>
 
     //Load table status for choose

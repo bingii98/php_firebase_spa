@@ -4,7 +4,7 @@
             <div class="menu-wrapper">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index.php"><img src="assets/img/logo/logo.png"  alt="VenVen Spa Logo" style="height: 50px;"></a>
+                    <a href="index.php"><img src="assets/img/logo/logo.png" alt="VenVen Spa Logo" style="height: 50px;"></a>
                 </div>
                 <!-- Main-menu -->
                 <div class="main-menu d-none d-lg-block">
@@ -13,15 +13,19 @@
                             <li><a href="index.php">Trang chủ</a></li>
                             <li><a href="shop.php?type=product">Sản phẩm</a>
                                 <ul class="submenu">
-                                    <?php foreach ($arr_list_product as $item){ ?>
-                                        <li><a href="shop.php?type=product&id=<?php echo $item->getId()?>"> <?php echo $item->getName() ?></a></li>
+                                    <?php foreach ($arr_list_product as $item) { ?>
+                                        <li>
+                                            <a href="shop.php?type=product&id=<?php echo $item->getId() ?>"> <?php echo $item->getName() ?></a>
+                                        </li>
                                     <?php } ?>
                                 </ul>
                             </li>
                             <li class="hot"><a href="shop.php?type=service">Dịch vụ</a>
                                 <ul class="submenu">
-                                    <?php foreach ($arr_list_service as $item){ ?>
-                                        <li><a href="shop.php?type=service&id=<?php echo $item->getId()?>"><?php echo $item->getName() ?></a></li>
+                                    <?php foreach ($arr_list_service as $item) { ?>
+                                        <li>
+                                            <a href="shop.php?type=service&id=<?php echo $item->getId() ?>"><?php echo $item->getName() ?></a>
+                                        </li>
                                     <?php } ?>
                                 </ul>
                             </li>
@@ -46,17 +50,30 @@
                                 <span class="flaticon-search"></span>
                             </div>
                         </li>
-                        <?php if(isset($_SESSION['_userSignedIn'])){ ?>
-                            <li><button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flaticon-user">  <?php if($_SESSION['_userSignedIn']->getName() != null) echo $_SESSION['_userSignedIn']->getName(); else echo $_SESSION['_userSignedIn']->getEmail() ?></span></button></li>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                        <?php if (isset($_SESSION['_userSignedIn'])) { ?>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <?php if ($_SESSION['_userSignedIn']->getName() != null) echo $_SESSION['_userSignedIn']->getName(); else echo $_SESSION['_userSignedIn']->getEmail() ?>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="user-info.php"><i class="fa fa-user"
+                                                                                           aria-hidden="true"></i><span>Đổi thông tin</span></a>
+                                    <button class="dropdown-item" type="button" id="btn-reset-password"><i
+                                                class="fa fa-unlock-alt"
+                                                aria-hidden="true"></i><span>Đổi mật khẩu</span>
+                                    </button>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"
+                                                                                  aria-hidden="true"></i><span>Đăng xuất</span></a>
+                                </div>
                             </div>
-                        <? } else { ?>
+                        <?php } else { ?>
                             <li><a href="login.php"><span class="flaticon-user"> Đăng nhập</span></a></li>
-                        <? } ?>
-                        <li><a href="cart.php"><span class="flaticon-shopping-cart" id="cart-number"> <?php if(isset($_SESSION["cart_item"])) echo count($_SESSION["cart_item"]) ?></span></a> </li>
+                        <?php } ?>
+                        <li><a href="cart.php"><span class="flaticon-shopping-cart"
+                                                     id="cart-number"> <?php if (isset($_SESSION["cart_item"])) echo count($_SESSION["cart_item"]) ?></span></a>
+                        </li>
                     </ul>
                 </div>
             </div>

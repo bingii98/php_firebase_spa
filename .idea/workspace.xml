@@ -151,16 +151,16 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\spa_mkt" />
+      <recent name="C:\xampp\htdocs\spa_mkt\js" />
+      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\logo" />
+      <recent name="C:\xampp\htdocs\spa_mkt\controller" />
+      <recent name="C:\xampp\htdocs\spa_mkt\model" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\spa_mkt\js" />
       <recent name="C:\xampp\htdocs\spa_mkt" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\logo" />
-      <recent name="C:\xampp\htdocs\spa_mkt" />
-      <recent name="C:\xampp\htdocs\spa_mkt\controller" />
-      <recent name="C:\xampp\htdocs\spa_mkt\model" />
-      <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -178,7 +178,7 @@
       <workItem from="1593414470448" duration="5118000" />
       <workItem from="1593461570463" duration="2665000" />
       <workItem from="1593525486415" duration="14746000" />
-      <workItem from="1593665257626" duration="9582000" />
+      <workItem from="1593665257626" duration="12859000" />
     </task>
     <servers />
   </component>
@@ -226,10 +226,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593055059443" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593055166482">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593677603481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593055166482" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593677603481" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1593576273346">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

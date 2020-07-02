@@ -237,6 +237,7 @@ if(isset($_GET['id'] ))
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
 <script src="js/ajax/shop.js"></script>
+<script src="js/header.js"></script>
 <script>
     $(document).ready(function () {
         $.ajax({
