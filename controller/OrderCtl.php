@@ -134,7 +134,7 @@ class OrderCtl
         return $a;
     }
 
-    public function empty()
+    public function empty1()
     {
         $list = $this->firebase->getReference('orders')->set(null);
         return 0;

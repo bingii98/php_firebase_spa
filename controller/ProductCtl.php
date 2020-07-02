@@ -128,6 +128,29 @@ class ProductCtl
         return $arr;
     }
 
+    //LOAD BY LIST
+    public function getProductByList($idlist)
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product/product')->orderByChild('list')->equalTo($idlist)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
+    public function getServiceByList($idlist)
+    {
+        $arr = array();
+        $list = $this->firebase->getReference('product/service')->orderByChild('list')->equalTo($idlist)->getSnapshot()->getValue();
+        if (!empty($list))
+            foreach ($list as $key => $item) {
+                array_push($arr, new Product($key, $item['name'], $item['description'], $item['price'], $item['image'], $item['sale'], $item['isSale'], $item['isService'], $item['isActive']));
+            }
+        return $arr;
+    }
+
     public function getByList($id)
     {
         $arr = array();

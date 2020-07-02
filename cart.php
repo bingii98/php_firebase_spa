@@ -67,6 +67,7 @@ $arr_list_product = $listCtl->getProduct();
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Empty</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -87,48 +88,41 @@ $arr_list_product = $listCtl->getProduct();
                                     </td>
                                     <td>
                                         <div class="product_count">
-                                            <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                            <input class="input-number" type="text" value="<?php echo $item["quantity"]; ?>" min="0" max="10">
-                                            <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                                            <h5 class="input-number" type="text"> <?php echo $item["quantity"]; ?></h5>
                                         </div>
                                     </td>
                                     <td>
-                                        <h5><?php echo number_format(($item["price"] * $item["quantity"]), 0, '', '.'); ?>₫</h5>
+                                        <h5><?php echo number_format(($item["price"] * $item["quantity"]), 0, '', '.'); ?>
+                                            ₫</h5>
+                                    </td>
+                                    <td>
+                                        <h5>
+                                            <button onclick="cartAction('remove','<?php echo $code ?>')">x</button>
+                                        </h5>
                                     </td>
                                 </tr>
                                 <?php
                                 $item_total += ($item["price"] * $item["quantity"]);
                             } ?>
-
-                        <tr class="bottom_button">
-                            <td>
-                                <a class="btn_1" href="#">Update Cart</a>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div class="cupon_text float-right">
-                                    <a class="btn_1" href="#">Close Coupon</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <h5>Subtotal</h5>
-                            </td>
-                            <td>
-                                <h5><?php echo number_format($item_total, 0, '', '.'); ?>₫</h5>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <h5>Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5><?php echo number_format($item_total, 0, '', '.'); ?>₫</h5>
+                                </td>
+                            </tr>
                         <?php } ?>
                         </tbody>
                     </table>
+                    <?php if(isset($_SESSION["cart_item"])) { ?>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="#">Continue Shopping</a>
-                        <button class="btn_1 checkout_btn_1" id="checkout">Proceed to checkout</button>
+                        <a class="btn_1" href="shop.php">Tiếp tục mua sắm</a>
+                        <button class="btn_1 checkout_btn_1" id="checkout">Đặt hàng</button>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
     </section>
@@ -179,6 +173,7 @@ $arr_list_product = $listCtl->getProduct();
 <!-- Jquery Plugins, main Jquery -->
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
+<script src="js/ajax/shop.js"></script>
 <script>
 
     //Load table status for choose
@@ -186,7 +181,7 @@ $arr_list_product = $listCtl->getProduct();
         $.ajax({
             url: "a-handle-cart.php",
             data: {
-                "action" : "payment"
+                "action": "payment"
             },
             type: "POST",
             success: function (data) {

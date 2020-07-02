@@ -130,7 +130,7 @@ $arr_list_product_product = $productCtl->getProduct();
                                     <span><?php echo number_format($item->getPrice() - $item->getPrice() / 100 * $item->getSale(), 0, "", ".") ?> đ</span>
 <!--                                    <span>--><?php //echo number_format($item->getPrice(), 0, "", ".") ?><!--</span>-->
                                 <?php } else { ?>
-                                    <span><?php echo number_format($item->getPrice(), 0, "", ".") ?> đ</span>
+                                    <span><?php echo number_format($item->getPrice(), 0, "", ".") ?>đ</span>
                                 <?php } ?>
                             </div>
                         </div>
@@ -194,7 +194,7 @@ $arr_list_product_product = $productCtl->getProduct();
                                 <div class="popular-img">
                                     <img src="<?php echo $item->getImage() ?>" alt="">
                                     <div class="img-cap">
-                                        <span>Add to cart</span>
+                                        <span><button type="button" id="add_<?php echo $item->getId() ?>" class="btnAddAction cart-action add-cart-btn" onClick="cartAction('add', '<?php echo $item->getId() ?>')" style="background: none;color: white;font-size: 18px;border: none;cursor: pointer;">Add to cart</button></span>
                                     </div>
                                     <div class="favorit-items">
                                         <span class="flaticon-heart"></span>
@@ -412,6 +412,6 @@ $arr_list_product_product = $productCtl->getProduct();
     <!-- Jquery Plugins, main Jquery -->	
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
-    
+    <script src="js/ajax/shop.js"></script>
 </body>
 </html>

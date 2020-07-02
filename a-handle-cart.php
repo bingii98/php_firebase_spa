@@ -52,6 +52,8 @@ if (!empty($_POST["action"])) {
             break;
     }
 }
+echo count($_SESSION["cart_item"]);
 ?>
+
 
 

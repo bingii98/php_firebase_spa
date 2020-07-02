@@ -8,6 +8,8 @@ $listCtl = new ListCtl();
 $productCtl = new ProductCtl();
 $arr_list_service = $listCtl->getService();
 $arr_list_product = $listCtl->getProduct();
+if(isset($_GET['id'] ))
+    $list = $listCtl->get($_GET['id']);
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -17,7 +19,6 @@ $arr_list_product = $listCtl->getProduct();
     <title>Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
@@ -49,7 +50,7 @@ $arr_list_product = $listCtl->getProduct();
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>Sản phẩm</h2>
+                            <h2><?php if(isset($list)) echo $list->getName(); else if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'Sản phẩm'; else echo 'Dịch vụ'; ?></h2>
                         </div>
                     </div>
                 </div>
@@ -186,30 +187,6 @@ $arr_list_product = $listCtl->getProduct();
                     </div>
                 </div>
             </div>
-            <!-- Footer bottom -->
-            <div class="row align-items-center">
-                <div class="col-xl-7 col-lg-8 col-md-7">
-                    <div class="footer-copy-right">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                            All rights reserved | This template is made with <i class="fa fa-heart"
-                                                                                aria-hidden="true"></i> by <a
-                                    href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-4 col-md-5">
-                    <div class="footer-copy-right f-right">
-                        <!-- social -->
-                        <div class="footer-social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Footer End-->
@@ -259,12 +236,14 @@ $arr_list_product = $listCtl->getProduct();
 <!-- Jquery Plugins, main Jquery -->
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
+<script src="js/ajax/shop.js"></script>
 <script>
     $(document).ready(function () {
         $.ajax({
             url: "a-product-load-more.php",
             data : {
-                "type" : '<?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'product'; else echo 'service'; ?>'
+               <?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo '"type" : "product"'; else echo '"type" : "service"'; ?>
+               <?php if(isset($_GET['id'])) echo ',"list" : "'.$_GET['id'].'"'; ?>
             },
             type: "POST",
             success: function (data) {
@@ -277,7 +256,8 @@ $arr_list_product = $listCtl->getProduct();
             url: 'a-product-load-more.php',
             data: {
                 'id' : $(this).attr('data'),
-                "type" : '<?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'product'; else echo 'service'; ?>'
+                <?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo '"type" : "product"'; else echo '"type" : "service"'; ?>
+                <?php if(isset($_GET['id'])) echo ',"list" : "'.$_GET['id'].'"'; ?>
             },
             type: "POST",
             beforeSend : function(){
@@ -309,68 +289,9 @@ $arr_list_product = $listCtl->getProduct();
         })
     })
 
-    //Card acction
-    function cartAction(action, product_code) {
-        var queryString = "";
-        if (action != "") {
-            switch (action) {
-                case "add":
-                    queryString = 'action=' + action + '&code=' + product_code;
-                    break;
-                case "remove":
-                    queryString = 'action=' + action + '&code=' + product_code;
-                    break;
-                case "empty":
-                    queryString = 'action=' + action;
-                    break;
-            }
-        }
-
-        $.ajax({
-            url: "a-handle-cart.php",
-            data: queryString,
-            type: "POST",
-            beforeSend : function(){
-                $("#cart-item table").after('<p id="loading-svg" style="width: 100%; text-align: center">\n' +
-                    '            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">\n' +
-                    '                    <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">\n' +
-                    '                        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                    </rect>\n' +
-                    '                <rect x="8" y="9.837" width="4" height="10.326" fill="#333" opacity="0.2">\n' +
-                    '                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                </rect>\n' +
-                    '                <rect x="16" y="7.663" width="4" height="14.674" fill="#333" opacity="0.2">\n' +
-                    '                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                    '                </rect>\n' +
-                    '            </svg>\n' +
-                    '        </p>')
-            },
-            success: function (data) {
-                $("#cart-item").html(data);
-                if (action != "") {
-                    switch (action) {
-                        case "add" :
-                            alert("Đã thêm vào hàng chờ!");
-                            break;
-                        case "remove":
-                            alert("Đã xóa khỏi hàng chờ!");
-                            break;
-                        case "empty":
-                            alert("List is empty!");
-                            break;
-                    }
-                }
-            },
-            error: function () {
-            }
-        });
-    }
+    $(document).on('click','.view-detail',function () {
+        window.location.href = $(this).attr('href');
+    })
 </script>
 </body>
 </html>

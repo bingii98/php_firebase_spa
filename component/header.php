@@ -4,7 +4,7 @@
             <div class="menu-wrapper">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="../admin.php"><img src="assets/img/logo/logo.png"  alt="VenVen Spa Logo" style="height: 50px;"></a>
+                    <a href="index.php"><img src="assets/img/logo/logo.png"  alt="VenVen Spa Logo" style="height: 50px;"></a>
                 </div>
                 <!-- Main-menu -->
                 <div class="main-menu d-none d-lg-block">
@@ -47,7 +47,7 @@
                             </div>
                         </li>
                         <li> <a href="login.php"><span class="flaticon-user">  <?php if($_SESSION['_userSignedIn']->getName() != null) echo $_SESSION['_userSignedIn']->getName(); else echo $_SESSION['_userSignedIn']->getEmail() ?></span></a></li>
-                        <li><a href="cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
+                        <li><a href="cart.php"><span class="flaticon-shopping-cart" id="cart-number"> <?php if(isset($_SESSION["cart_item"])) echo count($_SESSION["cart_item"]) ?></span></a> </li>
                     </ul>
                 </div>
             </div>
