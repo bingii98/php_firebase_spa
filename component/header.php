@@ -4,31 +4,31 @@
             <div class="menu-wrapper">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="../admin.php"><img src="assets/img/logo/logo.png" alt=""></a>
+                    <a href="../admin.php"><img src="assets/img/logo/logo.png"  alt="VenVen Spa Logo" style="height: 50px;"></a>
                 </div>
                 <!-- Main-menu -->
                 <div class="main-menu d-none d-lg-block">
                     <nav>
                         <ul id="navigation">
                             <li><a href="index.php">Trang chủ</a></li>
-                            <li><a href="#">Sản phẩm</a>
+                            <li><a href="shop.php?type=product">Sản phẩm</a>
                                 <ul class="submenu">
                                     <?php foreach ($arr_list_product as $item){ ?>
-                                        <li><a href="shop.php"> <?php echo $item->getName() ?></a></li>
+                                        <li><a href="shop.php?type=product&id=<?php echo $item->getId()?>"> <?php echo $item->getName() ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>
-                            <li class="hot"><a href="blog.html">Dịch vụ</a>
+                            <li class="hot"><a href="shop.php?type=service">Dịch vụ</a>
                                 <ul class="submenu">
                                     <?php foreach ($arr_list_service as $item){ ?>
-                                        <li><a href="shop.php"> <?php echo $item->getName() ?></a></li>
+                                        <li><a href="shop.php?type=service&id=<?php echo $item->getId()?>"><?php echo $item->getName() ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>
                             <li><a href="#">Pages</a>
                                 <ul class="submenu">
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="login.php">Login</a></li>
+                                    <li><a href="cart.php">Cart</a></li>
                                     <li><a href="elements.html">Element</a></li>
                                     <li><a href="confirmation.html">Confirmation</a></li>
                                     <li><a href="checkout.html">Product Checkout</a></li>
@@ -46,8 +46,8 @@
                                 <span class="flaticon-search"></span>
                             </div>
                         </li>
-                        <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
-                        <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
+                        <li> <a href="login.php"><span class="flaticon-user">  <?php if($_SESSION['_userSignedIn']->getName() != null) echo $_SESSION['_userSignedIn']->getName(); else echo $_SESSION['_userSignedIn']->getEmail() ?></span></a></li>
+                        <li><a href="cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
                     </ul>
                 </div>
             </div>

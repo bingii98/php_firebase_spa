@@ -1,3 +1,15 @@
+<?php
+include_once __DIR__ . '/model/User.php';
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
+include_once __DIR__ . '/controller/ListCtl.php';
+include_once __DIR__ . '/controller/ProductCtl.php';
+$listCtl = new ListCtl();
+$productCtl = new ProductCtl();
+$arr_list_service = $listCtl->getService();
+$arr_list_product = $listCtl->getProduct();
+$product = $productCtl->get($_GET['code']);
+?>
 <!doctype html>
 <html lang="zxx">
 <head>
@@ -23,72 +35,10 @@
         <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
-    
-
 <body>
-    
     <header>
         <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="menu-wrapper">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="index.php"><img src="assets/img/logo/logo.png" alt=""></a>
-                        </div>
-                        <!-- Main-menu -->
-                        <div class="main-menu d-none d-lg-block">
-                            <nav>                                                
-                                <ul id="navigation">  
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="shop.php">shop</a></li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li class="hot"><a href="#">Latest</a>
-                                        <ul class="submenu">
-                                            <li><a href="shop.php"> Product list</a></li>
-                                            <li><a href="product_details.html"> Product Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="elements.html">Element</a></li>
-                                            <li><a href="confirmation.html">Confirmation</a></li>
-                                            <li><a href="checkout.html">Product Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.php">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- Header Right -->
-                        <div class="header-right">
-                            <ul>
-                                <li>
-                                    <div class="nav-search search-switch">
-                                        <span class="flaticon-search"></span>
-                                    </div>
-                                </li>
-                                <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
-                                <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Mobile Menu -->
-                    <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php include 'component/header.php' ?>
         <!-- Header End -->
     </header>
     <main>
@@ -99,7 +49,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Watch Shop</h2>
+                                <h2><?php echo $product->getName() ?></h2>
                             </div>
                         </div>
                     </div>
@@ -114,23 +64,14 @@
                 <div class="col-lg-12">
                 <div class="product_img_slide owl-carousel">
                     <div class="single_product_img">
-                        <img src="assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
-                    </div>
-                    <div class="single_product_img">
-                        <img src="assets/img/gallery/gallery01.png" alt="#" class="img-fluid">
-                    </div>
-                    <div class="single_product_img">
-                        <img src="assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
+                        <img src="<?php echo $product->getImage() ?>" alt="#" class="img-fluid">
                     </div>
                 </div>
                 </div>
                 <div class="col-lg-8">
                 <div class="single_product_text text-center">
-                    <h3>Foam filling cotton slow <br>
-                        rebound pillows</h3>
-                    <p>
-                        Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
-                    </p>
+                    <h3><?php echo $product->getName() ?></h3>
+                    <p><?php echo $product->getDiscription() ?></p>
                     <div class="card_area">
                         <div class="product_count_area">
                             <p>Quantity</p>

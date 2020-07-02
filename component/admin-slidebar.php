@@ -28,7 +28,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="py-2 collapse-inner rounded" style="background-color: var(--bg-dark);">
                 <h6 class="collapse-header">Tùy chọn:</h6>
-                <a class="collapse-item" href="admin-product-show.php">Danh sách</a>
+                <a class="collapse-item" href="admin-product-show.php?type=product">Danh sách sản phẩm</a>
+                <a class="collapse-item" href="admin-product-show.php?type=service">Danh sách dịch vụ</a>
                 <a class="collapse-item" href="admin-product-add.php">Thêm sản phẩm</a>
             </div>
         </div>

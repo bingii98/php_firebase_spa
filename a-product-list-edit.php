@@ -29,7 +29,7 @@ if ($a) {
     /*  CHECK EXIST NAME */
     if ($listCtl->get_by_name($name) == null || $listCtl->get_by_name($name)->getName() == $name) {
         /*  INSERT FOOD TO FIREBASE */
-        $list = new Lists($id, $name, $description, null,array());
+        $list = new Lists($id, $name, $description, null,null,array());
         if ($listCtl->update($list))
             echo 'true';
         else

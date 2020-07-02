@@ -1973,7 +1973,7 @@ input:focus::-moz-placeholder {
     position: relative;
     border-style: solid;
     border-width: 1px;
-    border-top-color: #ff2020;
+    border-top-color: #2dbfc0;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
@@ -2871,7 +2871,7 @@ input:hover,input:focus {
 }
 
 .header-area .main-header .menu-wrapper .main-menu ul li:hover>a {
-    color: #ff2020;
+    color: #2dbfc0;
 }
 
 .header-area .main-header .menu-wrapper .main-menu ul li.hot {
@@ -2881,7 +2881,7 @@ input:hover,input:focus {
 .header-area .main-header .menu-wrapper .main-menu ul li.hot::before {
     position: absolute;
     content: "HOT";
-    background: #ff003c;
+    background: #2dbfc0;
     color: #fff;
     text-align: center;
     border-radius: 8px;
@@ -2920,7 +2920,7 @@ input:hover,input:focus {
     opacity: 0;
     box-shadow: 0 0 10px 3px rgba(0,0,0,0.05);
     padding: 17px 0;
-    border-top: 3px solid #ff2020;
+    border-top: 3px solid #2dbfc0;
     border-radius: 7px 7px 3px 3px;
     -webkit-transition: all .2s ease-out 0s;
     -moz-transition: all .2s ease-out 0s;
@@ -2942,14 +2942,14 @@ input:hover,input:focus {
 }
 
 .header-area .main-header .menu-wrapper .main-menu ul ul.submenu>li>a:hover {
-    color: #ff2020;
+    color: #2dbfc0;
     background: none;
 }
 
 .header-area .main-header .menu-wrapper .main-menu ul ul.submenu::before {
     border-style: solid;
     border-width: 0 6px 6px 6px;
-    border-color: transparent transparent red transparent;
+    border-color: transparent transparent #2dbfc0 transparent;
     content: "";
     top: -5px;
     left: 13%;
@@ -3392,6 +3392,7 @@ input:hover,input:focus {
 .single-new-pro .product-img {
     overflow: hidden;
     margin-bottom: 30px;
+    height: 250px;
 }
 
 .single-new-pro .product-img img {
@@ -3494,7 +3495,7 @@ input:hover,input:focus {
     border-bottom: 3px solid #ff2020;
     margin-bottom: 19px;
     position: relative;
-    height: 300px;
+    height: 245px;
 }
 
 .popular-items .single-popular-items .popular-img img {

@@ -1,23 +1,3 @@
-$(document).ready(function () {
-    /*Load change list drinks*/
-    loadChange("product", function () {
-        $.ajax({
-            url: "a-product-admin-load.php",
-            type: "POST",
-            success: function (data) {
-                $(document).ready(function () {
-                    $('#data-food-table').html(data);
-                });
-            }
-        })
-    })
-
-    /*Event change value input range*/
-    $(document).on('input change','#txt-range-sale', function() {
-        $('#show-range-percent').html($('#txt-range-sale').val());
-    })
-})
-
 $(document).on("click", ".btn-del-product", function() {
     const r = confirm('Bạn có chắc chắn muốn ngừng bán ' + $(this).attr('name') + ' không ?');
     if (r == true) {

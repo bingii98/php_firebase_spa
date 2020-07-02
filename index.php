@@ -1,12 +1,15 @@
 <?php
+include_once __DIR__ . '/model/User.php';
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 include_once __DIR__ . '/controller/ListCtl.php';
 include_once __DIR__ . '/controller/ProductCtl.php';
 $listCtl = new ListCtl();
 $productCtl = new ProductCtl();
 $arr_list_service = $listCtl->getService();
 $arr_list_product = $listCtl->getProduct();
-$arr_list_product_new = $productCtl->getNew();
-$arr_list_product_service = $productCtl->getService();
+$arr_list_product_new = $productCtl->getProductLimit(3);
+$arr_list_product_service = $productCtl->getServiceLimit(4);
 $arr_list_product_product = $productCtl->getProduct();
 ?>
 <!doctype html>
@@ -41,7 +44,7 @@ $arr_list_product_product = $productCtl->getProduct();
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
+                    <img src="assets/img/logo/logo.png" alt="VenVen Spa Logo" style="height: 50px;">
                 </div>
             </div>
         </div>
@@ -66,7 +69,7 @@ $arr_list_product_product = $productCtl->getProduct();
                                     <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Dịch vụ chuyên nghiệp</p>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                        <a href="industries.html" class="btn hero-btn">Dịch vụ</a>
+                                        <a href="shop.php?type=service" class="btn hero-btn">Dịch vụ</a>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +91,7 @@ $arr_list_product_product = $productCtl->getProduct();
                                     <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Đánh giá của khách hàng là quan trọng với chúng tôi</p>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                        <a href="industries.html" class="btn hero-btn">Sản phẩm</a>
+                                        <a href="shop.php?type=product" class="btn hero-btn">Sản phẩm</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +125,7 @@ $arr_list_product_product = $productCtl->getProduct();
                                 <img src="<?php echo $item->getImage() ?>" alt="">
                             </div>
                             <div class="product-caption">
-                                <h3 style="white-space: nowrap;overflow: hidden;"><a href="product_details.html"><?php echo $item->getName() ?></a></h3>
+                                <h3 style="white-space: nowrap;overflow: hidden;"><a href="product_details.php?code=<?php echo $item->getId() ?>"><?php echo $item->getName() ?></a></h3>
                                 <?php if ($item->getIsSale() == 1) { ?>
                                     <span><?php echo number_format($item->getPrice() - $item->getPrice() / 100 * $item->getSale(), 0, "", ".") ?> đ</span>
 <!--                                    <span>--><?php //echo number_format($item->getPrice(), 0, "", ".") ?><!--</span>-->
@@ -177,13 +180,13 @@ $arr_list_product_product = $productCtl->getProduct();
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-10">
                         <div class="section-tittle mb-70 text-center">
-                            <h2>Sản phẩm</h2>
+                            <h2>Dịch vụ</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <?php $i = 0;
-                    foreach ($arr_list_product_product as $item) {
+                    foreach ($arr_list_product_service as $item) {
                         if(++$i > 3)
                             break; ?>
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
@@ -198,7 +201,7 @@ $arr_list_product_product = $productCtl->getProduct();
                                     </div>
                                 </div>
                                 <div class="popular-caption">
-                                    <h3><a href="product_details.html"><?php echo $item->getName() ?></a></h3>
+                                    <h3><a href="product_details.php?code=<?php echo $item->getId() ?>"><?php echo $item->getName() ?></a></h3>
                                     <span><?php echo number_format($item->getPrice(), 0, "", ".") ?> đ</span>
                                 </div>
                             </div>

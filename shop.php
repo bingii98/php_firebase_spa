@@ -1,11 +1,13 @@
 <?php
+include_once __DIR__ . '/model/User.php';
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 include_once __DIR__ . '/controller/ListCtl.php';
 include_once __DIR__ . '/controller/ProductCtl.php';
 $listCtl = new ListCtl();
 $productCtl = new ProductCtl();
 $arr_list_service = $listCtl->getService();
 $arr_list_product = $listCtl->getProduct();
-$arr_product = $productCtl->getProductFirst9();
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -33,17 +35,6 @@ $arr_product = $productCtl->getProductFirst9();
 </head>
 
 <body>
-<!--? Preloader Start -->
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="assets/img/logo/logo.png" alt="">
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Preloader Start -->
 <header>
     <!-- Header Start -->
@@ -74,35 +65,27 @@ $arr_product = $productCtl->getProductFirst9();
                 <!-- card one -->
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row" id="list">
-                        <?php foreach ($arr_product as $item) { ?>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                                <div class="single-popular-items mb-50 text-center">
-                                    <div class="popular-img">
-                                        <img src="<?php echo $item->getImage() ?>" alt="">
-                                        <div class="img-cap">
-                                            <span>Add to cart</span>
-                                        </div>
-                                        <div class="favorit-items">
-                                            <span class="flaticon-heart"></span>
-                                        </div>
-                                    </div>
-                                    <div class="popular-caption">
-                                        <h3><a href="product_details.html"><?php echo $item->getName() ?></a></h3>
-                                        <span>
-                                            <?php if ($item->getIsSale() == 1) { ?>
-                                                <span><?php echo number_format($item->getPrice() - $item->getPrice() / 100 * $item->getSale(), 0, "", ".") ?> đ</span>
-                                                <!--                                    <span>--><?php //echo number_format($item->getPrice(), 0, "", ".") ?><!--</span>-->
-                                            <?php } else { ?>
-                                                <span><?php echo number_format($item->getPrice(), 0, "", ".") ?> đ</span>
-                                            <?php } ?>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" id="div-load-more">
-                                <button class="btn btn-primary mr-auto" style="margin: 0 auto" id="btn-load-more" data="<?php echo $arr_product[0]->getId() ?>">Load more</button>
-                            </div>
+                        <div id="div-load-more" style="    width: 100%;">
+                            <p id="loading-svg" style="width: 100%; text-align: center">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                                                <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">
+                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                                                </rect>
+                                    <rect x="8" y="9.837" width="4" height="10.326" fill="#333" opacity="0.2">
+                                        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                                        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                                        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                    <rect x="16" y="7.663" width="4" height="14.674" fill="#333" opacity="0.2">
+                                        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                                        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                                        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                                    </rect>
+                                            </svg>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -277,11 +260,11 @@ $arr_product = $productCtl->getProductFirst9();
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
 <script>
-    $(document).on("click","#btn-load-more",function () {
+    $(document).ready(function () {
         $.ajax({
-            url: 'a-product-load-more.php',
-            data: {
-                'id' : $(this).attr('data')
+            url: "a-product-load-more.php",
+            data : {
+                "type" : '<?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'product'; else echo 'service'; ?>'
             },
             type: "POST",
             success: function (data) {
@@ -289,6 +272,105 @@ $arr_product = $productCtl->getProductFirst9();
             }
         })
     })
+    $(document).on("click","#btn-load-more",function () {
+        $.ajax({
+            url: 'a-product-load-more.php',
+            data: {
+                'id' : $(this).attr('data'),
+                "type" : '<?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'product'; else echo 'service'; ?>'
+            },
+            type: "POST",
+            beforeSend : function(){
+                $("#div-load-more").replaceWith('<tr id="div-load-more"><td colspan="8">\n' +
+                    '                                        <p id="loading-svg" style="width: 100%; text-align: center">\n' +
+                    '                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">\n' +
+                    '                                                <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">\n' +
+                    '                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                </rect>\n' +
+                    '                                                <rect x="8" y="9.837" width="4" height="10.326" fill="#333" opacity="0.2">\n' +
+                    '                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                </rect>\n' +
+                    '                                                <rect x="16" y="7.663" width="4" height="14.674" fill="#333" opacity="0.2">\n' +
+                    '                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                                                </rect>\n' +
+                    '                                            </svg>\n' +
+                    '                                        </p>\n' +
+                    '                                    </td></tr>')
+            },
+            success: function (data) {
+                $("#div-load-more").replaceWith(data)
+            }
+        })
+    })
+
+    //Card acction
+    function cartAction(action, product_code) {
+        var queryString = "";
+        if (action != "") {
+            switch (action) {
+                case "add":
+                    queryString = 'action=' + action + '&code=' + product_code;
+                    break;
+                case "remove":
+                    queryString = 'action=' + action + '&code=' + product_code;
+                    break;
+                case "empty":
+                    queryString = 'action=' + action;
+                    break;
+            }
+        }
+
+        $.ajax({
+            url: "a-handle-cart.php",
+            data: queryString,
+            type: "POST",
+            beforeSend : function(){
+                $("#cart-item table").after('<p id="loading-svg" style="width: 100%; text-align: center">\n' +
+                    '            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">\n' +
+                    '                    <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">\n' +
+                    '                        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                    </rect>\n' +
+                    '                <rect x="8" y="9.837" width="4" height="10.326" fill="#333" opacity="0.2">\n' +
+                    '                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                </rect>\n' +
+                    '                <rect x="16" y="7.663" width="4" height="14.674" fill="#333" opacity="0.2">\n' +
+                    '                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
+                    '                </rect>\n' +
+                    '            </svg>\n' +
+                    '        </p>')
+            },
+            success: function (data) {
+                $("#cart-item").html(data);
+                if (action != "") {
+                    switch (action) {
+                        case "add" :
+                            alert("Đã thêm vào hàng chờ!");
+                            break;
+                        case "remove":
+                            alert("Đã xóa khỏi hàng chờ!");
+                            break;
+                        case "empty":
+                            alert("List is empty!");
+                            break;
+                    }
+                }
+            },
+            error: function () {
+            }
+        });
+    }
 </script>
 </body>
 </html>

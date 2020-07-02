@@ -1,11 +1,20 @@
 <?php
 include_once __DIR__ . '/controller/ProductCtl.php';
 $productCtl = new ProductCtl();
-$arr = $productCtl->getAll();
-
+if ($_POST['type'] == 'product' && !isset($_POST['id']))
+    $arr = $productCtl->getProductFirst(10);
+if ($_POST['type'] == 'service' && !isset($_POST['id']))
+    $arr = $productCtl->getServiceFirst(10);
+if ($_POST['type'] == 'product' && isset($_POST['id']))
+    $arr = $productCtl->getProductContinue($_POST['id'], 10);
+if ($_POST['type'] == 'service' && isset($_POST['id']))
+    $arr = $productCtl->getServiceContinue($_POST['id'], 10);
+$arr = array_reverse($arr);
+if (!isset($_POST['index'])) $index = 0; else $index = $_POST['index'];
+if(count($arr) != 1){
 foreach ($arr as $i => $item) { ?>
     <tr>
-        <th><?php echo $i ?></th>
+        <th><?php echo ++$index ?></th>
         <td><img src="<?php echo $item->getImage() ?>"
                  style="width: 80px; border-radius: 10px;"</td>
         <th><?php echo $item->getName();
@@ -33,6 +42,18 @@ foreach ($arr as $i => $item) { ?>
                     </span>
                 </button>
             <?php } ?>
+        </td>
+    </tr>
+<?php } ?>
+<tr id="div-load-more">
+    <td colspan="8">
+        <button class="btn btn-link mr-auto" style="margin: 0 auto;width: 100%;" id="btn-load-more" data="<?php echo $item->getId() ?>" index="<?php echo $index; ?>">Load more</button>
+    </td>
+</tr>
+<?php } else{ ?>
+    <tr id="div-load-more">
+        <td colspan="8">
+            <a class="btn btn-link mr-auto" style="margin: 0 auto;width: 100%;" id="btn-load-more">Đã load hết</a>
         </td>
     </tr>
 <?php } ?>
