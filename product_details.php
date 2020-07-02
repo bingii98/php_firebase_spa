@@ -77,8 +77,7 @@ $product = $productCtl->get($_GET['code']);
                                 <p>Quantity</p>
                                 <div class="product_count d-inline-block">
                                     <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                    <input class="product_count_item input-number" type="text" value="1" min="0"
-                                           max="10">
+                                    <input class="product_count_item input-number" type="text" value="1" min="0" max="10" id="quantity">
                                     <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                                 </div>
                                 <p><?php echo number_format($product->getPrice(), 0, "", ".") ?>đ</p>

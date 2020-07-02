@@ -4,7 +4,10 @@ function cartAction(action, product_code) {
     if (action != "") {
         switch (action) {
             case "add":
-                queryString = 'action=' + action + '&code=' + product_code;
+                if(typeof($("#quantity")) != "undefined" && $("#quantity") !== null)
+                    queryString = 'action=' + action + '&code=' + product_code + '&quantity=' + $("#quantity").val();
+                else
+                    queryString = 'action=' + action + '&code=' + product_code;
                 break;
             case "remove":
                 queryString = 'action=' + action + '&code=' + product_code;

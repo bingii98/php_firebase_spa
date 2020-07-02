@@ -17,13 +17,20 @@ if (!empty($_POST["action"])) {
             } else {
                 $price = $productByCode->getPrice();
             }
-            $itemArray = array($productByCode->getId() => array('name' => $productByCode->getName(), 'quantity' => 1, 'price' => $price));
+
+            if(isset($_POST['quantity']))
+                $itemArray = array($productByCode->getId() => array('name' => $productByCode->getName(), 'quantity' => $_POST['quantity'], 'price' => $price));
+            else
+                $itemArray = array($productByCode->getId() => array('name' => $productByCode->getName(), 'quantity' => 1, 'price' => $price));
 
             if (!empty($_SESSION["cart_item"])) {
                 if (array_key_exists($productByCode->getId(), $_SESSION["cart_item"])) {
                     foreach ($_SESSION["cart_item"] as $k => $v) {
                         if ($productByCode->getId() == $k) {
-                            $_SESSION["cart_item"][$k]["quantity"] += 1;
+                            if(isset($_POST['quantity']))
+                                $_SESSION["cart_item"][$k]["quantity"] += $_POST['quantity'];
+                            else
+                                $_SESSION["cart_item"][$k]["quantity"] += 1;
                         }
                     }
                 } else {
@@ -52,7 +59,7 @@ if (!empty($_POST["action"])) {
             break;
     }
 }
-echo count($_SESSION["cart_item"]);
+if(isset($_SESSION["cart_item"])) echo count($_SESSION["cart_item"]); else echo 0;
 ?>
 
 

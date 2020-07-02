@@ -46,7 +46,16 @@
                                 <span class="flaticon-search"></span>
                             </div>
                         </li>
-                        <li> <a href="login.php"><span class="flaticon-user">  <?php if($_SESSION['_userSignedIn']->getName() != null) echo $_SESSION['_userSignedIn']->getName(); else echo $_SESSION['_userSignedIn']->getEmail() ?></span></a></li>
+                        <?php if(isset($_SESSION['_userSignedIn'])){ ?>
+                            <li><button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flaticon-user">  <?php if($_SESSION['_userSignedIn']->getName() != null) echo $_SESSION['_userSignedIn']->getName(); else echo $_SESSION['_userSignedIn']->getEmail() ?></span></button></li>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        <? } else { ?>
+                            <li><a href="login.php"><span class="flaticon-user"> Đăng nhập</span></a></li>
+                        <? } ?>
                         <li><a href="cart.php"><span class="flaticon-shopping-cart" id="cart-number"> <?php if(isset($_SESSION["cart_item"])) echo count($_SESSION["cart_item"]) ?></span></a> </li>
                     </ul>
                 </div>

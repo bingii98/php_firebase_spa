@@ -245,7 +245,7 @@ $arr_list_product_product = $productCtl->getProduct();
                         <div class="watch-details mb-40">
                             <h2><?php echo $arr_list_product_product[0]->getName() ?></h2>
                             <p><?php echo $arr_list_product_product[0]->getDiscription() ?></p>
-                            <a href="shop.php" class="btn">Show Watches</a>
+                            <a href="product_details.php?code=<?php echo $arr_list_product_product[0]->getId() ?>" class="btn">Xem chi tiết</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-10">
@@ -264,7 +264,7 @@ $arr_list_product_product = $productCtl->getProduct();
                         <div class="watch-details mb-40">
                             <h2><?php echo $arr_list_product_product[1]->getName() ?></h2>
                             <p><?php echo $arr_list_product_product[1]->getDiscription() ?></p>
-                            <a href="shop.php" class="btn">Show Watches</a>
+                            <a href="product_details.php?code=<?php echo $arr_list_product_product[1]->getId() ?>" class="btn">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>

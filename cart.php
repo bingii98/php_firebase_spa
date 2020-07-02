@@ -97,7 +97,7 @@ $arr_list_product = $listCtl->getProduct();
                                     </td>
                                     <td>
                                         <h5>
-                                            <button onclick="cartAction('remove','<?php echo $code ?>')">x</button>
+                                            <button onclick="cartAction('remove','<?php echo $code ?>')" style="background: red; border: none;">x</button>
                                         </h5>
                                     </td>
                                 </tr>
@@ -113,6 +113,7 @@ $arr_list_product = $listCtl->getProduct();
                                 <td>
                                     <h5><?php echo number_format($item_total, 0, '', '.'); ?>₫</h5>
                                 </td>
+                                <td></td>
                             </tr>
                         <?php } ?>
                         </tbody>
