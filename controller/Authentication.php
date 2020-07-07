@@ -31,6 +31,25 @@ class MyService
         }
     }
 
+    public function get($uid)
+    {
+        try {
+            $result = $this->auth->getUser($uid);
+            if(isset($result->customAttributes['admin']))
+                $admin = true;
+            else
+                $admin = false;
+            $userSignedIn = new User($result->uid,$result->displayName,$result->email,$result->photoUrl,$admin,$result->metadata->lastLoginAt,$result->disabled);
+            return $userSignedIn;
+        } catch (Exception $e) {
+            return null;
+        } catch (\Kreait\Firebase\Exception\AuthException $e) {
+            return null;
+        } catch (\Kreait\Firebase\Exception\FirebaseException $e) {
+            return null;
+        }
+    }
+
     public function forgot_password($username)
     {
         try {

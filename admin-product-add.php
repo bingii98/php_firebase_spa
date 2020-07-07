@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/controller/ListCtl.php';
 if (!isset($_SESSION)) session_start();
-//if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
+if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 ?>
 <!DOCTYPE html>
 <html lang="vn">

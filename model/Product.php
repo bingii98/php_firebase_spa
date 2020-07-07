@@ -7,6 +7,7 @@ class Product
     private $price;
     private $image;
     private $sale;
+    private $view;
     private $isSale;
     private $isService;
     private $isActive;
@@ -19,11 +20,11 @@ class Product
      * @param $price
      * @param $image
      * @param $sale
+     * @param $view
      * @param $isSale
      * @param $isService
-     * @param $isActive
      */
-    public function __construct($id, $name, $discription, $price, $image, $sale, $isSale, $isService, $isActive)
+    public function __construct($id, $name, $discription, $price, $image, $sale, $view, $isSale, $isService)
     {
         $this->id = $id;
         $this->name = $name;
@@ -31,9 +32,9 @@ class Product
         $this->price = $price;
         $this->image = $image;
         $this->sale = $sale;
+        $this->view = $view;
         $this->isSale = $isSale;
         $this->isService = $isService;
-        $this->isActive = $isActive;
     }
 
     /**
@@ -130,6 +131,22 @@ class Product
     public function setSale($sale)
     {
         $this->sale = $sale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getView()
+    {
+        return $this->view;
+    }
+
+    /**
+     * @param mixed $view
+     */
+    public function setView($view)
+    {
+        $this->view = $view;
     }
 
     /**

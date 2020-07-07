@@ -75,7 +75,7 @@ $arr_list_product_product = $productCtl->getProduct();
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                                 <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                                    <img src="assets/img/hero/watch.png" alt="" class=" heartbeat">
+                                    <img src="assets/img/hero/lady-massage.png" alt="" class=" heartbeat">
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@ $arr_list_product_product = $productCtl->getProduct();
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                                 <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                                    <img src="assets/img/hero/watch.png" alt="" class=" heartbeat">
+                                    <img src="assets/img/hero/lady-massage.png" alt="" class=" heartbeat">
                                 </div>
                             </div>
                         </div>
@@ -413,5 +413,6 @@ $arr_list_product_product = $productCtl->getProduct();
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="js/ajax/shop.js"></script>
+    <script src="js/header.js"></script>
 </body>
 </html>

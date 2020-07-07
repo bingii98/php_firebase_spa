@@ -140,7 +140,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/img/hero" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -156,11 +156,11 @@
       <recent name="C:\xampp\htdocs\spa_mkt" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\hero" />
       <recent name="C:\xampp\htdocs\spa_mkt" />
       <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
       <recent name="C:\xampp\htdocs\spa_mkt\js" />
       <recent name="C:\xampp\htdocs\spa_mkt\assets\img\logo" />
-      <recent name="C:\xampp\htdocs\spa_mkt\controller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -179,7 +179,7 @@
       <workItem from="1593461570463" duration="2665000" />
       <workItem from="1593525486415" duration="14746000" />
       <workItem from="1593665257626" duration="12859000" />
-      <workItem from="1594137839030" duration="4354000" />
+      <workItem from="1594137839030" duration="11170000" />
     </task>
     <servers />
   </component>
@@ -203,10 +203,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Change manager list" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1020" y="318" key="#com.intellij.ide.util.MemberChooser" timestamp="1593417367547">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1594145975802">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593055323171" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594145975802" />
     <state x="1020" y="318" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1593417367547" />
     <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593655511902">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -227,10 +227,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593055059443" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593677603481">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1594148229336">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593677603481" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594148229336" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1593576273346">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

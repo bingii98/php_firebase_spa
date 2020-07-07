@@ -36,6 +36,8 @@ $product = $productCtl->get($_GET['code']);
 
 </head>
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=604512550466770&autoLogAppEvents=1" nonce="vPpUR5gB"></script>
 <header>
     <!-- Header Start -->
     <?php include 'component/header.php' ?>
@@ -87,6 +89,9 @@ $product = $productCtl->get($_GET['code']);
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5" data-width=""></div>
                 </div>
             </div>
         </div>
