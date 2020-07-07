@@ -1,29 +1,28 @@
-//Card acction
-function cartAction(action, product_code) {
-    var queryString = "";
-    if (action != "") {
-        switch (action) {
-            case "add":
-                if(typeof($("#quantity").val()) != "undefined" && $("#quantity").val() !== null)
-                    queryString = 'action=' + action + '&code=' + product_code + '&quantity=' + $("#quantity").val();
-                else
-                    queryString = 'action=' + action + '&code=' + product_code;
-                break;
-            case "remove":
-                queryString = 'action=' + action + '&code=' + product_code;
-                break;
-            case "empty":
-                queryString = 'action=' + action;
-                break;
-        }
-    }
-
+$(document).ready(function () {
+    $('#loaded').hide();
+    /*Load change list drinks*/
     $.ajax({
-        url: "a-handle-cart.php",
-        data: queryString,
+        url: "a-load-order-admin.php",
         type: "POST",
-        beforeSend : function(){
-            $("#cart-item table").after('<p id="loading-svg" style="width: 100%; text-align: center">\n' +
+        success: function (data) {
+            $(document).ready(function () {
+                $('#data-order-table').html(data);
+            });
+        }
+    })
+})
+
+$(document).on('click', '#btn-load-more', function () {
+    $.ajax({
+        url: "a-load-more-order-admin.php",
+        data: {
+            'id': $(this).attr('data'),
+            'order': $(this).attr('order')
+        },
+        type: "POST",
+        beforeSend: function () {
+            $('#data-order-table tr:last td').html('<vector src="https://i.ya-webdesign.com/images/loading-png-gif.gif" width="50px">')
+            $("#order-last-row td").append('<p id="loading-svg" style="width: 100%; text-align: center">\n' +
                 '            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">\n' +
                 '                    <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">\n' +
                 '                        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
@@ -44,24 +43,35 @@ function cartAction(action, product_code) {
                 '        </p>')
         },
         success: function (data) {
-            $("#cart-item").html(data);
-            if (action != "") {
-                switch (action) {
-                    case "add" :
-                        alert("Đã thêm vào hàng chờ!");
-                        break;
-                    case "remove":
-                        alert("Đã xóa khỏi hàng chờ!");
-                        location.reload();
-                        break;
-                    case "empty":
-                        alert("List is empty!");
-                        break;
-                }
-                $("#cart-number").html(" " + data);
+            if (data == 'null') {
+                $('#data-order-table tr:last td').html('Đã tải hết dữ liệu.')
+            } else {
+                $('#data-order-table tr:last').remove()
+                $('#data-order-table').append(data)
             }
-        },
-        error: function () {
         }
-    });
-}
+    })
+})
+
+$(document).on('click', '.btn-view-detail', function () {
+    $.ajax({
+        url: "a-load-detail-order-admin.php",
+        data: {
+            'id': $(this).attr('data')
+        },
+        type: "POST",
+        beforeSend: function () {
+            $('#loaded').show();
+        },
+        success: function (data) {
+            if (data == 'null') {
+                $('#loaded').hide();
+                $('#model-detail-content').html('Dữ liệu lỗi.')
+            } else {
+                $('#loaded').hide();
+                $('#model-detail-content').html(data)
+                $("#orderDetailModal").modal('toggle')
+            }
+        }
+    })
+})

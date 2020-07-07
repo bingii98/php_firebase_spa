@@ -32,28 +32,32 @@ class OrderCtl
 
     public function getFirst10()
     {
+        $this->product_ctl = new ProductCtl();
         $list = $this->firebase->getReference('orders')->orderByKey()->limitToLast(10)->getSnapshot()->getValue();
         $arr = array();
         foreach ($list as $key => $item){
             $arr_detail = array();
+            $userRS = $this->auth->getUser($item['user']);
             foreach ($item['detail'] as $value) {
-                array_push($arr_detail, new OrderDetail($value['food'], $value['num'], $value['price']));
+                array_push($arr_detail, new OrderDetail($this->product_ctl->get($value['product']), $value['num'], $value['price']));
             }
-            array_push($arr,new Order($key, $item['date'], $item['staff'], $arr_detail));
+            array_push($arr,new Order($key, $item['date'], new User($userRS->uid,$userRS->displayName,$userRS->email,$userRS->photoUrl,(isset($userRS->customAttributes['isAdmin']) ? true : false),null,null), $arr_detail));
         }
         return array_reverse($arr);
     }
 
     public function getContinue10($idLast)
     {
+        $this->product_ctl = new ProductCtl();
         $list = $this->firebase->getReference('orders')->orderByKey()->endAt($idLast)->limitToLast(11)->getSnapshot()->getValue();
         $arr = array();
         foreach ($list as $key => $item){
             $arr_detail = array();
+            $userRS = $this->auth->getUser($item['user']);
             foreach ($item['detail'] as $value) {
-                array_push($arr_detail, new OrderDetail($value['food'], $value['num'], $value['price']));
+                array_push($arr_detail, new OrderDetail($this->product_ctl->get($value['product']), $value['num'], $value['price']));
             }
-            array_push($arr,new Order($key, $item['date'], $item['staff'], $arr_detail));
+            array_push($arr,new Order($key, $item['date'], new User($userRS->uid,$userRS->displayName,$userRS->email,$userRS->photoUrl,(isset($userRS->customAttributes['isAdmin']) ? true : false),null,null), $arr_detail));
         }
         return array_reverse($arr);
     }
@@ -74,11 +78,11 @@ class OrderCtl
 
     public function order_generation($uid,$date)
     {
-        $this->food_ctl = new FoodCtl();
+        $this->product_ctl = new productCtl();
         $this->table_ctl = new TableCtl();
         $arr_order_detail = array();
         foreach ($_SESSION["cart_item"] as $key => $item) {
-            array_push($arr_order_detail, new OrderDetail($this->food_ctl->get($key), $item['quantity'], $item['price']));
+            array_push($arr_order_detail, new OrderDetail($this->product_ctl->get($key), $item['quantity'], $item['price']));
         }
         $order = new Order(null, $date, $uid, $arr_order_detail);
         if (isset($_SESSION["cart_item"])) {
@@ -88,33 +92,33 @@ class OrderCtl
 
     public function get($id)
     {
-        $this->food_ctl = new FoodCtl();
+        $this->product_ctl = new productCtl();
         $list = $this->firebase->getReference('orders')->getChild($id)->getSnapshot()->getValue();
         $arr = array();
-        $a = $this->auth->getUser($list['staff']);
+        $a = $this->auth->getUser($list['user']);
         $user = new User($a->uid,$a->displayName,$a->email,null,null,null,null);
         foreach ($list['detail'] as $value) {
-            array_push($arr, new OrderDetail($this->food_ctl->get($value['food']), $value['num'], $value['price']));
+            array_push($arr, new OrderDetail($this->product_ctl->get($value['product']), $value['num'], $value['price']));
         }
         return new Order($id, $list['date'], $user, $arr);
     }
 
     public function get_range_date($dstart,$dstop)
     {
-        $this->food_ctl = new FoodCtl();
+        $this->product_ctl = new productCtl();
         $list = $this->firebase->getReference('orders')->orderByChild('date')->startAt($dstart)->endAt($dstop)->getSnapshot()->getValue();
         $arr = array();
         foreach ($list as $key => $item){
             $arr_detail = array();
             foreach ($item['detail'] as $value) {
-                array_push($arr_detail, new OrderDetail($value['food'], $value['num'], $value['price']));
+                array_push($arr_detail, new OrderDetail($value['product'], $value['num'], $value['price']));
             }
-            array_push($arr,new Order($key, $item['date'], $item['staff'], $arr_detail));
+            array_push($arr,new Order($key, $item['date'], $item['user'], $arr_detail));
         }
         return $arr;
     }
 
-    public function countFood($id)
+    public function countproduct($id)
     {
         $list = $this->firebase->getReference('orders')->getChild($id)->getSnapshot()->getValue();
         if ($list != null)

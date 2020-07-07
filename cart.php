@@ -92,7 +92,7 @@ $arr_list_product = $listCtl->getProduct();
                                         </div>
                                     </td>
                                     <td>
-                                        <h5><?php echo number_format(($item["price"] * $item["quantity"]), 0, '', '.'); ?>
+                                        <h5><?php echo number_format((intval($item["price"]) * intval($item["quantity"])), 0, '', '.'); ?>
                                             ₫</h5>
                                     </td>
                                     <td>

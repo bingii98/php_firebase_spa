@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__ . '/model/User.php';
-require_once __DIR__ . '/model/Product.php';
+require_once __DIR__ . '/model/User.php';
 if (!isset($_SESSION)) session_start();
 if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 ?>
@@ -12,7 +11,7 @@ if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Venven Spa - Sản phẩm</title>
+    <title>Venven Spa - Hóa đơn</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://bingii901.com/images/icons/favicon.ico">
     <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -20,7 +19,6 @@ if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
     <link href="vendor_file/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-
 <body id="page-top">
 <div class="wrapper">
 </div>
@@ -41,7 +39,7 @@ if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
             <div class="container-fluid">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Danh sách danh mục</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Danh sách hóa đơn</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -50,18 +48,17 @@ if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
                                 <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Tên</th>
-                                    <th>Mô tả</th>
-                                    <th style="min-width: 100px;">Giá</th>
-                                    <th>Giảm giá</th>
-                                    <th>Loại</th>
+                                    <th>ID</th>
+                                    <th>Khách hàng</th>
+                                    <th>Ngày</th>
+                                    <th>Chi tiết</th>
+                                    <th>Tổng giá</th>
                                     <th>Hành động</th>
                                 </tr>
                                 </thead>
-                                <tbody id="data-food-table">
+                                <tbody id="data-order-table">
                                 <tr>
-                                    <td colspan="8">
+                                    <td colspan="7" style="text-align: center">
                                         <p id="loading-svg" style="width: 100%; text-align: center">
                                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
                                                 <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">
@@ -93,19 +90,17 @@ if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModal"
-     aria-hidden="true">
+<div class="modal fade" id="orderDetailModal" tabindex="-1" role="dialog" aria-labelledby="orderDetailModal"  aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border-bottom: none;">
-                <h4 style="text-align: center;width: 100%;font-weight: bold;margin-top: 35px;margin-bottom: 17px;">Chỉnh
-                    sửa</h4>
+                <h4 style="text-align: center;width: 100%;font-weight: bold;margin-top: 35px;margin-bottom: 17px;">Chi tiết hoá đơn</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="card-body" id="model-edit-content">
+                <div class="card-body" id="model-detail-content">
 
                 </div>
             </div>
@@ -124,65 +119,8 @@ if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
 <script src="js/notification.js"></script>
 <script src="js/ajax/firebase-reload-data-event.js"></script>
-<script src="js/ajax/product.js"></script>
+<script src="js/ajax/order-list.js"></script>
 <script src="js/ajax/regex.js"></script>
-<script>
-    $(document).ready(function () {
-        /*Load change list drinks*/
-        loadChange("product", function () {
-            $.ajax({
-                url: "a-product-admin-load.php",
-                data : {
-                  "type" : '<?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'product'; else echo 'service'; ?>'
-                },
-                type: "POST",
-                success: function (data) {
-                    $(document).ready(function () {
-                        $('#data-food-table').html(data);
-                    });
-                }
-            })
-        })
-
-        $(document).on("click","#btn-load-more",function () {
-            $.ajax({
-                url: 'a-product-admin-load.php',
-                data: {
-                    'id' : $(this).attr('data'),
-                    "type" : '<?php if(isset($_GET['type']) && $_GET['type'] == 'product') echo 'product'; else echo 'service'; ?>',
-                    "index" : $(this).attr('index')
-                },
-                type: "POST",
-                beforeSend : function(){
-                    $("#div-load-more").replaceWith('<tr id="div-load-more"><td colspan="8">\n' +
-                        '                                        <p id="loading-svg" style="width: 100%; text-align: center">\n' +
-                        '                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">\n' +
-                        '                                                <rect x="0" y="7.337" width="4" height="15.326" fill="#333" opacity="0.2">\n' +
-                        '                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                </rect>\n' +
-                        '                                                <rect x="8" y="9.837" width="4" height="10.326" fill="#333" opacity="0.2">\n' +
-                        '                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                </rect>\n' +
-                        '                                                <rect x="16" y="7.663" width="4" height="14.674" fill="#333" opacity="0.2">\n' +
-                        '                                                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>\n' +
-                        '                                                </rect>\n' +
-                        '                                            </svg>\n' +
-                        '                                        </p>\n' +
-                        '                                    </td></tr>')
-                },
-                success: function (data) {
-                    $("#div-load-more").replaceWith(data)
-                }
-            })
-        })
-    })
-</script>
 </body>
 
 </html>

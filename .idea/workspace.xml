@@ -151,16 +151,16 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\spa_mkt" />
-      <recent name="C:\xampp\htdocs\spa_mkt\js" />
-      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\logo" />
-      <recent name="C:\xampp\htdocs\spa_mkt\controller" />
-      <recent name="C:\xampp\htdocs\spa_mkt\model" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\spa_mkt\js" />
       <recent name="C:\xampp\htdocs\spa_mkt" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\spa_mkt" />
+      <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
+      <recent name="C:\xampp\htdocs\spa_mkt\js" />
+      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\logo" />
+      <recent name="C:\xampp\htdocs\spa_mkt\controller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -179,6 +179,7 @@
       <workItem from="1593461570463" duration="2665000" />
       <workItem from="1593525486415" duration="14746000" />
       <workItem from="1593665257626" duration="12859000" />
+      <workItem from="1594137839030" duration="4354000" />
     </task>
     <servers />
   </component>
@@ -216,11 +217,11 @@
     </state>
     <state x="905" y="291" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1593061048819" />
     <state x="905" y="291" key="CommitChangelistDialog2/2560.683.1366.728/0.0.2560.1400@0.0.2560.1400" timestamp="1593061386684" />
-    <state x="986" y="371" key="FileChooserDialogImpl" timestamp="1593645145664">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1594139687795">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="526" y="193" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593581256814" />
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593055872589" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594139687795" />
     <state x="986" y="371" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1593645145664" />
     <state x="769" y="243" key="NewPhpClassDialog" timestamp="1593055059443">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -240,5 +241,9 @@
     <state x="521" y="272" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593576231718" />
     <state x="549" y="942" key="com.intellij.ide.util.TipDialog/0.0.1440.2520@0.0.1440.2520" timestamp="1593593979954" />
     <state x="976" y="523" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1593635268791" />
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1594138779735">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594138779735" />
   </component>
 </project>

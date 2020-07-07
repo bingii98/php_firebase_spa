@@ -1,8 +1,8 @@
 <ul class="navbar-nav sidebar accordion -bg-darkblue" id="accordionSidebar"
     style="border-right: 1px solid var(--bg-dark-hr);">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
-        <div class="sidebar-brand-text mx-3">Administrator</div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+        <div class="sidebar-brand-text mx-3">Giao diện chính</div>
     </a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -55,7 +55,7 @@
     </div>
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="admin-hoa-don.php">
+        <a class="nav-link" href="admin-orders.php">
             <i class="fa fa-paper-plane" aria-hidden="true"></i>
             <span>Hóa đơn</span></a>
     </li>
