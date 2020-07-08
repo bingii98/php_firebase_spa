@@ -23,8 +23,9 @@ class Product
      * @param $view
      * @param $isSale
      * @param $isService
+     * @param $isActive
      */
-    public function __construct($id, $name, $discription, $price, $image, $sale, $view, $isSale, $isService)
+    public function __construct($id, $name, $discription, $price, $image, $sale, $view, $isSale, $isService, $isActive)
     {
         $this->id = $id;
         $this->name = $name;
@@ -35,7 +36,9 @@ class Product
         $this->view = $view;
         $this->isSale = $isSale;
         $this->isService = $isService;
+        $this->isActive = $isActive;
     }
+
 
     /**
      * @return mixed

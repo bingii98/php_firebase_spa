@@ -47,7 +47,7 @@ $arr_list_product = $listCtl->getProduct(); ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 text-edit"><button class="form-button edit">Sữa</button></div>
+                <div class="col-md-1 text-edit"><button class="form-button edit">Sửa</button></div>
             </div>
             <div class="row form-line">
                 <div class="col-md-3"><p class="form-title ">Email</p></div>
@@ -69,7 +69,7 @@ $arr_list_product = $listCtl->getProduct(); ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1"><button class="form-button edit">Sữa</button></div>
+                <div class="col-md-1"><button class="form-button edit">Sửa</button></div>
             </div>
         </div>
     </div>

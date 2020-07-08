@@ -1,7 +1,6 @@
 <?php
 include_once __DIR__ . '/model/User.php';
 if (!isset($_SESSION)) session_start();
-if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 include_once __DIR__ . '/controller/ListCtl.php';
 include_once __DIR__ . '/controller/ProductCtl.php';
 $listCtl = new ListCtl();
@@ -56,6 +55,7 @@ $arr_list_product_product = $productCtl->getProduct();
         <!-- Header End -->
     </header>
     <main>
+        <?php echo print_r($_SESSION['_userSignedIn']->getIsAdmin()) ?>
         <!--? slider Area Start -->
         <div class="slider-area ">
             <div class="slider-active">
@@ -194,10 +194,10 @@ $arr_list_product_product = $productCtl->getProduct();
                                 <div class="popular-img">
                                     <img src="<?php echo $item->getImage() ?>" alt="">
                                     <div class="img-cap">
-                                        <span><button type="button" id="add_<?php echo $item->getId() ?>" class="btnAddAction cart-action add-cart-btn" onClick="cartAction('add', '<?php echo $item->getId() ?>')" style="background: none;color: white;font-size: 18px;border: none;cursor: pointer;">Add to cart</button></span>
+                                        <span><button type="button" id="add_<?php echo $item->getId() ?>" class="btnAddAction cart-action add-cart-btn" onClick="cartAction('add', '<?php echo $item->getId() ?>')" style="background: none;color: white;font-size: 18px;border: none;cursor: pointer;">Thêm vào giỏ hàng</button></span>
                                     </div>
                                     <div class="favorit-items">
-                                        <span class="flaticon-heart"></span>
+                                        <span></span>
                                     </div>
                                 </div>
                                 <div class="popular-caption">
@@ -211,7 +211,7 @@ $arr_list_product_product = $productCtl->getProduct();
                 <!-- Button -->
                 <div class="row justify-content-center">
                     <div class="room-btn pt-70">
-                        <a href="catagori.html" class="btn view-btn1">View More Products</a>
+                        <a href="catagori.html" class="btn view-btn1">Xem nhiều hơn</a>
                     </div>
                 </div>
             </div>
@@ -223,14 +223,14 @@ $arr_list_product_product = $productCtl->getProduct();
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                     <div class="video-wrap">
-                        <div class="play-btn "><a class="popup-video" href="https://youtu.be/AoPiLg8DZ3A"><i class="fas fa-play"></i></a></div>
+                        <div class="play-btn "><a class="popup-video" href="https://youtu.be/44L51iSfiSY"><i class="fas fa-play"></i></a></div>
                     </div>
                     </div>
                 </div>
                 <!-- Arrow -->
                 <div class="thumb-content-box">
                     <div class="thumb-content">
-                        <h3>Next Video</h3>
+                        <h3>Xem chi tiết</h3>
                         <a href="#"> <i class="flaticon-arrow"></i></a>
                     </div>
                 </div>

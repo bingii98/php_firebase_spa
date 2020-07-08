@@ -19,6 +19,7 @@ foreach ($arr as $i => $item) { ?>
                  style="width: 80px; border-radius: 10px;"</td>
         <th><?php echo $item->getName();
             echo ' <small>' . (!$item->getIsActive() ? '(Ngưng bán)' : '') . '</small>'; ?></th>
+        <td><?php echo $item->getView() ?></td>
         <td><?php echo $item->getDiscription() ?></td>
         <td><?php echo number_format($item->getPrice(), 0, "", ".") ?> ₫</td>
         <td><?php if ($item->getIsSale()) echo $item->getSale() . "%"; else echo '0%'; ?></td>

@@ -35,7 +35,7 @@ class MyService
     {
         try {
             $result = $this->auth->getUser($uid);
-            if(isset($result->customAttributes['admin']))
+            if(isset($result->customAttributes['isAdmin']))
                 $admin = true;
             else
                 $admin = false;
@@ -124,7 +124,7 @@ class MyService
     public function set_admin($uid,$value)
     {
         try {
-            $this->auth->setCustomUserAttributes($uid, ['admin' => $value]);
+            $this->auth->setCustomUserAttributes($uid, ['isAdmin' => $value]);
             return true;
         } catch (Exception $e) {
             return false;

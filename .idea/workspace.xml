@@ -11,50 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83c764b0-a61d-44ac-b49a-83a272eb2a84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/a-access-login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/a-handle-cart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/Authentication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/OrderCtl.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/OrderDetail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a-product-admin-load.php" beforeDir="false" afterPath="$PROJECT_DIR$/a-product-admin-load.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a-product-list-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/a-product-list-edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a-product-load-more.php" beforeDir="false" afterPath="$PROJECT_DIR$/a-product-load-more.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin-orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-product-add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin-product-add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-product-show.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin-product-show.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/logo/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/blank.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/buttons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/cards.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/admin-slidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/component/admin-slidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/component/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/confirmation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/ListCtl.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ListCtl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/Authentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/Authentication.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/ProductCtl.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ProductCtl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/elements.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/forgot-password.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ajax/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ajax/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/product_details.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/product_details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/tables.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities-animation.html" beforeDir="false" afterPath="$PROJECT_DIR$/utilities-animation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities-border.html" beforeDir="false" afterPath="$PROJECT_DIR$/utilities-border.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities-color.html" beforeDir="false" afterPath="$PROJECT_DIR$/utilities-color.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities-other.html" beforeDir="false" afterPath="$PROJECT_DIR$/utilities-other.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-info.php" beforeDir="false" afterPath="$PROJECT_DIR$/user-info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +38,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -140,7 +117,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/img/hero" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -156,8 +133,8 @@
       <recent name="C:\xampp\htdocs\spa_mkt" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\hero" />
       <recent name="C:\xampp\htdocs\spa_mkt" />
+      <recent name="C:\xampp\htdocs\spa_mkt\assets\img\hero" />
       <recent name="C:\xampp\htdocs\spa_mkt\js\ajax" />
       <recent name="C:\xampp\htdocs\spa_mkt\js" />
       <recent name="C:\xampp\htdocs\spa_mkt\assets\img\logo" />
@@ -180,34 +157,38 @@
       <workItem from="1593525486415" duration="14746000" />
       <workItem from="1593665257626" duration="12859000" />
       <workItem from="1594137839030" duration="11170000" />
+      <workItem from="1594160002532" duration="7225000" />
+      <workItem from="1594167503019" duration="4060000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change manager list" />
     <option name="LAST_COMMIT_MESSAGE" value="Change manager list" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1594145975802">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1020" y="318" key="#com.intellij.ide.util.MemberChooser" timestamp="1594168012211">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594145975802" />
     <state x="1020" y="318" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1593417367547" />
+    <state x="1020" y="318" key="#com.intellij.ide.util.MemberChooser/2560.683.1366.728/0.0.2560.1400@0.0.2560.1400" timestamp="1594168012211" />
     <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593655511902">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -217,30 +198,33 @@
     </state>
     <state x="905" y="291" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1593061048819" />
     <state x="905" y="291" key="CommitChangelistDialog2/2560.683.1366.728/0.0.2560.1400@0.0.2560.1400" timestamp="1593061386684" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1594139687795">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="987" y="370" key="FileChooserDialogImpl" timestamp="1594166858948">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="526" y="193" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593581256814" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594139687795" />
     <state x="986" y="371" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1593645145664" />
+    <state x="987" y="370" key="FileChooserDialogImpl/2560.683.1366.728/0.0.2560.1400@0.0.2560.1400" timestamp="1594166858948" />
     <state x="769" y="243" key="NewPhpClassDialog" timestamp="1593055059443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593055059443" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1594148229336">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1059" y="596" key="NewPhpFileDialog" timestamp="1594163869964">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594148229336" />
+    <state x="1059" y="596" key="NewPhpFileDialog/2560.683.1366.728/0.0.2560.1400@0.0.2560.1400" timestamp="1594163869964" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1593576273346">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1593576273346" />
-    <state x="976" y="523" key="com.intellij.ide.util.TipDialog" timestamp="1593635268791">
+    <state x="976" y="523" key="com.intellij.ide.util.TipDialog" timestamp="1594167503313">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="521" y="272" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593576231718" />
     <state x="549" y="942" key="com.intellij.ide.util.TipDialog/0.0.1440.2520@0.0.1440.2520" timestamp="1593593979954" />
     <state x="976" y="523" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1593635268791" />
+    <state x="976" y="523" key="com.intellij.ide.util.TipDialog/2560.683.1366.728/0.0.2560.1400@0.0.2560.1400" timestamp="1594167503313" />
     <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1594138779735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

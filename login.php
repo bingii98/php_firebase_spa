@@ -1,5 +1,7 @@
 <?php
+include_once 'model/User.php';
 if (!isset($_SESSION)) session_start();
+if (isset($_SESSION['_userSignedIn']) && $_SESSION['_userSignedIn']->getIsAdmin() == true) header('Location: admin.php');
 if (isset($_SESSION['_userSignedIn'])) header('Location: index.php');
 ?>
 <!doctype html>
@@ -7,7 +9,7 @@ if (isset($_SESSION['_userSignedIn'])) header('Location: index.php');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Watch shop | eCommers</title>
+    <title>VenVen Spa - Đăng nhập</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -25,8 +27,26 @@ if (isset($_SESSION['_userSignedIn'])) header('Location: index.php');
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .fa-google {
+            margin-right: 3px;
+            font-size: 15px;
+            background: conic-gradient(
+                    from -45deg,
+                    #ea4335 110deg,
+                    #4285f4 90deg 180deg,
+                    #34a853 180deg 270deg,
+                    #fbbc05 270deg
+            )
+            73% 55%/150% 150% no-repeat;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #fafafa">
 <main>
     <!--================login_part Area =================-->
     <section class="login_part">
@@ -34,9 +54,9 @@ if (isset($_SESSION['_userSignedIn'])) header('Location: index.php');
             <div class="row align-items-center">
                 <div class="offset-lg-3 col-lg-6 col-md-6">
                     <div class="login_part_form">
-                        <div class="login_part_form_iner">
-                            <h3>Welcome Back ! <br>
-                                Please Sign in now</h3>
+                        <div class="login_part_form_iner" style="margin-top: 50px;box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1); background-color: white; padding: 80px 50px;">
+                            <h3>Chào mừng trở lại ! <br>
+                                Đăng nhập</h3>
                             <div class="row contact_form">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="username" name="name" value=""
@@ -53,16 +73,12 @@ if (isset($_SESSION['_userSignedIn'])) header('Location: index.php');
                                 </div>
                                 <div class="col-md-12 form-group text-center">
                                     <a class="btn-link" href="#" id="btnGoogle">
-                                        Đăng nhập với <strong>Google</strong>
+                                        <i class='fab fa-google'></i> Đăng nhập với <strong>Google</strong>
                                     </a>
                                 </div>
                                 <div class="col-md-12 form-group text-center">
                                     <a class="btn-link" href="#" id="btnFacebook">
-                                        Đăng nhập với <strong>Facebook</strong>
-                                    </a>
-                                </div>
-                                <div class="col-md-12 form-group text-center">
-                                    <a class="btn-link" href="#" id="btn-forget-password">Quên mật khẩu
+                                        <i class='fab fa-facebook-square'></i> Đăng nhập với <strong>Facebook</strong>
                                     </a>
                                 </div>
                             </div>

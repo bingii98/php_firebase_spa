@@ -39,6 +39,7 @@ if ($arr != null) {
                         <span><?php echo number_format($item->getPrice(), 0, "", ".") ?> đ</span>
                     <?php } ?>
                 </span>
+
                     </div>
                 </div>
             </div>

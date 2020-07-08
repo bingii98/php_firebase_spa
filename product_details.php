@@ -1,7 +1,6 @@
 <?php
 include_once __DIR__ . '/model/User.php';
 if (!isset($_SESSION)) session_start();
-if (!isset($_SESSION['_userSignedIn'])) header('Location: login.php');
 include_once __DIR__ . '/controller/ListCtl.php';
 include_once __DIR__ . '/controller/ProductCtl.php';
 $listCtl = new ListCtl();
@@ -9,6 +8,7 @@ $productCtl = new ProductCtl();
 $arr_list_service = $listCtl->getService();
 $arr_list_product = $listCtl->getProduct();
 $product = $productCtl->get($_GET['code']);
+$productCtl->updateView($_GET['code']);
 ?>
 <!doctype html>
 <html lang="zxx">
@@ -37,7 +37,7 @@ $product = $productCtl->get($_GET['code']);
 </head>
 <body>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=604512550466770&autoLogAppEvents=1" nonce="vPpUR5gB"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=604512550466770&autoLogAppEvents=1" nonce="HSEIdN7q"></script>
 <header>
     <!-- Header Start -->
     <?php include 'component/header.php' ?>
@@ -89,9 +89,7 @@ $product = $productCtl->get($_GET['code']);
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5" data-width=""></div>
+                    <div class="fb-comments" data-href="https://www.bingii901.com/spa_mkt/product_details/<?php echo $_GET['code'] ?>" data-numposts="10" data-width="100%"></div>
                 </div>
             </div>
         </div>

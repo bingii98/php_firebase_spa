@@ -3538,7 +3538,7 @@ input:hover,input:focus {
     top: 12px;
     right: 20px;
     opacity: 0;
-    visibility: hidden;
+    visibility: visible;
     -webkit-transition: all .4s ease-out 0s;
     -moz-transition: all .4s ease-out 0s;
     -ms-transition: all .4s ease-out 0s;
@@ -7858,7 +7858,7 @@ b,sup,sub,u,del {
 }
 
 .product_image_area .single_product_text {
-    margin: 100px 0 200px;
+    margin: 50px;
 }
 
 @media (max-width: 991px) {
